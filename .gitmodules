@@ -1,0 +1,3 @@
+[submodule "sunbeam-private"]
+	path = sunbeam-private
+	url = git@github.com:j9311/sunbeam-private.git
