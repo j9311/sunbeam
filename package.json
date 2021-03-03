@@ -1,5 +1,28 @@
 {
   "dependencies": {
     "dotenv": "^8.2.0"
-  }
+  },
+  "name": "sunbeam",
+  "description": "Investor tools and data analytics for ######## markets. User logins, dashboards, charts, and more. Searchable APIs generated through MONGODB/Atlas. MERNG+ stack.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j9311/sunbeam.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j9311/sunbeam/issues"
+  },
+  "homepage": "https://github.com/j9311/sunbeam#readme"
 }
