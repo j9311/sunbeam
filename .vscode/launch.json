@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Scraper",
+      "program": "${workspaceFolder}/backend/private/runScrape.js",
+      "cwd": "${workspaceFolder}/backend",
+      "runtimeExecutable": "${workspaceFolder}/backend/node_modules/.bin/babel-node",
+      "protocol": "inspector",
+      "restart": true,
+      "runtimeArgs": ["--inspect"],
+      "sourceMaps": true
+    }
+  ]
+}

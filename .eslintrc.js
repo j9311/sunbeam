@@ -7,6 +7,8 @@ module.exports = {
   extends: ["plugin:prettier/recommended"],
   parserOptions: {
     parser: "babel-eslint",
+    ecmaVersion: 2021,
+    sourceType: "module",
   },
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",

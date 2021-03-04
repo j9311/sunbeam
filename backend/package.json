@@ -7,15 +7,32 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "./bin/app",
+    "start": "babel-node index.js",
+    "dev": "nodemon --exec babel-node index.js",
+    "scrape": "nodemon --exec babel-node private/runScrape.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.11",
+    "@apollo/server": "^3.0.0-alpha.1",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
+    "contentful": "^8.1.8",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "graphql-tag": "^2.11.0",
     "http-errors": "^1.8.0",
+    "node-fetch": "^2.6.1",
     "pino": "^6.11.1",
     "pino-http": "^5.5.0",
-    "pino-pretty": "^4.6.0"
+    "pino-pretty": "^4.6.0",
+    "pretty-bytes": "^5.6.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.13.9",
+    "@babel/register": "^7.13.8"
   }
 }
