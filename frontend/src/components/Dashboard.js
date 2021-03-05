@@ -1,5 +1,6 @@
 import React from "react"
 import { GiGooeyEyedSun } from "react-icons/gi"
+// import { StockChart } from "react-financial-charts"
 // import { Menu } from "./subcomponents/Menu.js"
 
 function Dashboard(props) {
