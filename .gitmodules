@@ -1,0 +1,4 @@
+[submodule "backend/private"]
+	path = backend/private
+	url = git@github.com:j9311/sunbeam-private.git
+	branch = master
