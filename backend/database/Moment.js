@@ -10,12 +10,18 @@ const momentPriceSchema = new Schema(
 
 const momentSchema = new Schema(
   {
-    _id: Number,
+    id: { type: String, index: true },
+    time: { type: Number, index: true },
     prices: [momentPriceSchema],
+    volumeCirculation: Number,
+    volumeSold: Number,
+    volumeListed: Number,
+    high: Number,
+    low: Number,
+    open: Number,
+    close: Number,
   },
   { versionKey: false }
 )
 
-export default function (id) {
-  return model("moment-" + id, momentSchema)
-}
+export default model("Listings", momentSchema)
