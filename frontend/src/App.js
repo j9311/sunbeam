@@ -3,14 +3,14 @@ import "./App.css"
 function App() {
   return (
     <div>
-      <nav class="bg-gray-800">
+      <nav class="bg-green-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <img
                   class="h-8 w-8"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                  src="https://i.gyazo.com/64119364560352dccc8143d275f5c7c3.png"
                   alt="Workflow"
                 />
               </div>
@@ -18,7 +18,7 @@ function App() {
                 <div class="ml-10 flex items-baseline space-x-4">
                   <a
                     href="http://localhost:3000/"
-                    class=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Dashboard
                   </a>
@@ -223,10 +223,10 @@ function App() {
               </div>
               <div class="ml-3">
                 <div class="text-base font-medium leading-none text-white">
-                  Tom Cook
+                  Google Name
                 </div>
                 <div class="text-sm font-medium leading-none text-gray-400">
-                  tom@example.com
+                  daemon@google.com
                 </div>
               </div>
               <button class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
@@ -274,13 +274,13 @@ function App() {
         </div>
       </nav>
 
-      <header class="bg-white shadow">
+      <header class="bg-green-600">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
         </div>
       </header>
       <main>
-        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="bg-gray-200 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div class="px-4 py-6 sm:px-0">
             <div class="border-4 border-dashed border-gray-800 rounded-lg h-96"></div>
             <br />
