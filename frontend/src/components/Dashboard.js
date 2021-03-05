@@ -1,6 +1,6 @@
 import React from "react"
 import { GiGooeyEyedSun } from "react-icons/gi"
-// import { StockChart } from "react-financial-charts"
+import MomentChart from "./MomentChart"
 // import { Menu } from "./subcomponents/Menu.js"
 
 function Dashboard(props) {
@@ -269,7 +269,9 @@ function Dashboard(props) {
       <main>
         <div class="bg-gray-200 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div class="px-4 py-6 sm:px-0">
-            <div class="border-4 border-dashed border-gray-800 rounded-lg h-96"></div>
+            <div class="border-4 border-dashed border-gray-800 rounded-lg h-96">
+              <MomentChart />
+            </div>
             <br />
             <div class="border-4 border-dashed border-gray-800 rounded-lg h-96"></div>
             <br />
