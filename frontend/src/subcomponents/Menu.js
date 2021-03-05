@@ -1,7 +1,6 @@
 import React from "react"
-// import { Menu } from "./subcomponents/Menu.js"
 
-function Dashboard(props) {
+function Menu(props) {
   return (
     <div>
       <nav class="bg-green-700">
@@ -57,7 +56,7 @@ function Dashboard(props) {
             <div class="hidden md:block">
               <div class="ml-4 flex items-center md:ml-6">
                 <a
-                  href="http://localhost:3000/Login"
+                  href="http://localhost:3000/"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Log In / Sign Out
@@ -211,7 +210,7 @@ function Dashboard(props) {
               Releases
             </a>
             <a
-              href="http://localhost:3000/Login"
+              href="http://localhost:3000/"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Log In / Sign Out
@@ -269,7 +268,7 @@ function Dashboard(props) {
               </a>
 
               <a
-                href="http://localhost:3000/Login"
+                href="http://localhost:3000/"
                 class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
                 Log In / Sign Out
@@ -278,24 +277,8 @@ function Dashboard(props) {
           </div>
         </div>
       </nav>
-      <header class="bg-green-600">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold text-gray-50">Dashboard</h1>
-        </div>
-      </header>
-      <main>
-        <div class="bg-gray-200 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <div class="px-4 py-6 sm:px-0">
-            <div class="border-4 border-dashed border-gray-800 rounded-lg h-96"></div>
-            <br />
-            <div class="border-4 border-dashed border-gray-800 rounded-lg h-96"></div>
-            <br />
-            <div class="border-4 border-dashed border-gray-800 rounded-lg h-96"></div>
-          </div>
-        </div>
-      </main>
     </div>
   )
 }
 
-export default Dashboard
+export default Menu

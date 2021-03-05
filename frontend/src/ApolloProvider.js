@@ -2,7 +2,7 @@ import React from "react"
 import App from "./App"
 import ApolloClient from "apollo-client"
 import { ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client"
-import { setContext } from "apollo-link-context"
+// import { setContext } from "apollo-link-context"
 console.log(process.env)
 const httpLink = createHttpLink({
   uri:
