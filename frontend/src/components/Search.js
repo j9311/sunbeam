@@ -271,11 +271,16 @@ function Search(props) {
                 <h2 class="text-lg font-medium leading-6 text-gray-900 p-5">
                   Current supported search parameters:
                 </h2>
-                <p class="mt-1 text-sm text-gray-600 p-5">
-                  Player names. Moment names. Set and Rarity coming soon.
-                </p>
-                <p class="mt-1 text-sm text-gray-600 p-5">
-                  Report any bugs or errors to J or X.
+                <ul class="mt-1 text-sm font-bold text-gray-600 p-5">
+                  <li>Player names. Moment names.</li>
+                  <li>Set and Rarity coming soon.</li>
+                  <li>
+                    Some listings and moments may not be present due to lack of
+                    volume;listings, sales or otherwise.
+                  </li>
+                </ul>
+                <p class="mt-1 text-sm text-gray-600 p-5 font-extralight">
+                  Report any bugs or errors to #dev-chat in Ligma.
                 </p>
               </div>
             </div>

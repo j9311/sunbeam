@@ -59,7 +59,7 @@ function Login(props) {
             <div class="text-sm">
               <a
                 href="http://localhost:3000/Dashboard"
-                class="font-medium text-green-600 hover:text-indigo-500"
+                class="font-medium text-green-600 hover:text-green-500"
               >
                 Forgot your password?
               </a>
@@ -69,11 +69,11 @@ function Login(props) {
           <div>
             <button
               type="submit"
-              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                 <svg
-                  class="h-5 w-5 text-white-500 group-hover:text-indigo-400"
+                  class="h-5 w-5 text-white-500 group-hover:text-gray-50"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
