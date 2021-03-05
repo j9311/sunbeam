@@ -58,7 +58,7 @@ function Login(props) {
 
             <div class="text-sm">
               <a
-                href="http://localhost:3000/"
+                href="http://localhost:3000/Dashboard"
                 class="font-medium text-green-600 hover:text-indigo-500"
               >
                 Forgot your password?

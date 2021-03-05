@@ -1,4 +1,5 @@
 import React from "react"
+import { GiGooeyEyedSun } from "react-icons/gi"
 
 function Releases(props) {
   return (
@@ -7,17 +8,11 @@ function Releases(props) {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <img
-                  class="h-8 w-8"
-                  src="https://i.gyazo.com/64119364560352dccc8143d275f5c7c3.png"
-                  alt="Workflow"
-                />
-              </div>
+              <GiGooeyEyedSun class=""></GiGooeyEyedSun>
               <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-4">
                   <a
-                    href="http://localhost:3000/"
+                    href="http://localhost:3000/Dashboard"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Dashboard
@@ -56,7 +51,7 @@ function Releases(props) {
             <div class="hidden md:block">
               <div class="ml-4 flex items-center md:ml-6">
                 <a
-                  href="http://localhost:3000/Login"
+                  href="http://localhost:3000/"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Log In / Sign Out
@@ -176,7 +171,7 @@ function Releases(props) {
         <div class="md:hidden" id="mobile-menu">
           <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a
-              href="http://localhost:3000/"
+              href="http://localhost:3000/Dashboard"
               class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Dashboard
@@ -210,7 +205,7 @@ function Releases(props) {
               Releases
             </a>
             <a
-              href="http://localhost:3000/Login"
+              href="http://localhost:3000/"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Log In / Sign Out
@@ -255,20 +250,6 @@ function Releases(props) {
             <div class="mt-3 px-2 space-y-1">
               <a
                 href="http://localhost:3000/"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-              >
-                Your Profile
-              </a>
-
-              <a
-                href="http://localhost:3000/"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-              >
-                Settings
-              </a>
-
-              <a
-                href="http://localhost:3000/Login"
                 class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
                 Log In / Sign Out

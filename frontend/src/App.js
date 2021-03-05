@@ -19,12 +19,12 @@ function App() {
   return (
     // <AuthProvider>
     <Router>
-      <Route exact path="/" component={Dashboard} />
+      <Route exact path="/" component={Login} />
       <Route exact path="/Favorites" component={Favorites} />
       <Route exact path="/Search" component={Search} />
       <Route exact path="/Redlines" component={Redlines} />
       <Route exact path="/Releases" component={Releases} />
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/Dashboard" component={Dashboard} />
     </Router>
     // </AuthProvider>
   )
