@@ -1,4 +1,5 @@
 import React from "react"
+import { GiGooeyEyedSun } from "react-icons/gi"
 
 function Menu(props) {
   return (
@@ -7,13 +8,8 @@ function Menu(props) {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <img
-                  class="h-8 w-8"
-                  src="https://i.gyazo.com/64119364560352dccc8143d275f5c7c3.png"
-                  alt="Workflow"
-                />
-              </div>
+              <GiGooeyEyedSun class=""></GiGooeyEyedSun>
+
               <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-4">
                   <a
@@ -257,26 +253,17 @@ function Menu(props) {
                 href="http://localhost:3000/"
                 class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
-                Your Profile
-              </a>
-
-              <a
-                href="http://localhost:3000/"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-              >
-                Settings
-              </a>
-
-              <a
-                href="http://localhost:3000/"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-              >
                 Log In / Sign Out
               </a>
             </div>
           </div>
         </div>
       </nav>
+      <header class="bg-green-600">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <h1 class="text-3xl font-bold text-gray-50">Dashboard</h1>
+        </div>
+      </header>
     </div>
   )
 }

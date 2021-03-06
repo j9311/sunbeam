@@ -18,17 +18,24 @@ import {
   CircleMarker,
 } from "@react-financial-charts/series"
 
+// import { MACDTooltip } from "react-financial-charts/tooltip"
+
 import { HoverTooltip } from "react-financial-charts"
 function getData(listings) {
   const arr = []
   arr.columns = ["time", "volumeListed", "high", "low"]
   for (const sample of listings) {
     const prices = sample.prices.map((x) => Number(x.price))
+    const serials = sample.prices.map((x) => Number(x.serial))
+    console.log("serials", serials)
     const _min = min(prices)
+    const _max = max(prices)
+    const _fakemin = min(prices) + (min(prices) + min(prices) * 0.1)
+    const _fakemax = max(prices) - max(prices) * 0.3
     arr.push({
       date: new Date(sample.time),
       volume: sample.volumeListed,
-      high: _min,
+      high: _max,
       low: _min,
       open: _min,
       close: _min,
@@ -108,10 +115,22 @@ function MomentChart({ width, height, ratio }) {
                   label: "Volume",
                   value: currentItem.volume && numberFormat(currentItem.volume),
                 },
+                {
+                  label: "Highest",
+                  value: currentItem.high && numberFormat(currentItem.high),
+                },
               ],
             }),
           }}
         />
+
+        {/* <MACDSeries yAccessor={(d) => d.macd} {...macdAppearance} />
+        <MACDTooltip
+          origin={[-38, 15]}
+          yAccessor={(d) => d.macd}
+          options={macdCalculator.options()}
+          appearance={macdAppearance}
+        /> */}
 
         <XAxis />
         <YAxis />
