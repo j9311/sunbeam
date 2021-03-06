@@ -95,7 +95,7 @@ function MomentChart({ width, height, ratio }) {
     <ChartCanvas
       height={height}
       ratio={ratio}
-      width={width}
+      width={960}
       margin={margin}
       data={data}
       displayXAccessor={displayXAccessor}
