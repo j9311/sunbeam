@@ -167,6 +167,10 @@ function MomentChart({ width, height, ratio }) {
                   label: "Highest",
                   value: currentItem.high && numberFormat(currentItem.high),
                 },
+                // {
+                //   label: "DPS",
+                //   value: currentItem.DPS && numberFormat(currentItem.DPS),
+                // },
               ],
             }),
           }}
