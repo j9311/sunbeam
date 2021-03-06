@@ -267,9 +267,9 @@ function Dashboard(props) {
         </div>
       </header>
       <main>
-        <div class="bg-gray-200 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="bg-gray-300 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div class="px-4 py-6 sm:px-0">
-            <div class="border-4 border-dashed border-gray-800 rounded-lg h-96">
+            <div class="rounded-lg h-96">
               <MomentChart />
             </div>
             <br />

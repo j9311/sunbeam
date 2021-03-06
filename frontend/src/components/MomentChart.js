@@ -1,10 +1,10 @@
 import React from "react"
 
-import { min, max } from "d3-array"
+import { min, max, quantile } from "d3-array"
 import { format } from "d3-format"
 import { timeFormat } from "d3-time-format"
 
-import listings from "../listings.json"
+import rawListings from "../listings.json"
 
 import { withDeviceRatio, withSize } from "@react-financial-charts/utils"
 import { Chart, ChartCanvas } from "@react-financial-charts/core"
@@ -18,6 +18,8 @@ import {
   CircleMarker,
 } from "@react-financial-charts/series"
 
+import ScatterNebula from "./ScatterNebula"
+
 // import { MACDTooltip } from "react-financial-charts/tooltip"
 
 import { HoverTooltip } from "react-financial-charts"
@@ -25,9 +27,12 @@ function getData(listings) {
   const arr = []
   arr.columns = ["time", "volumeListed", "high", "low"]
   for (const sample of listings) {
-    const prices = sample.prices.map((x) => Number(x.price))
+    let prices = sample.prices.map((x) => Number(x.price))
+    const barrier = quantile(prices, 0.75)
+    prices = prices.filter((x) => x <= barrier)
+
     const serials = sample.prices.map((x) => Number(x.serial))
-    console.log("serials", serials)
+    // console.log("serials", serials)
     const _min = min(prices)
     const _max = max(prices)
     const _fakemin = min(prices) + (min(prices) + min(prices) * 0.1)
@@ -35,15 +40,22 @@ function getData(listings) {
     arr.push({
       date: new Date(sample.time),
       volume: sample.volumeListed,
-      high: _max,
+      prices: prices,
+      high: Math.min(barrier, _max),
       low: _min,
       open: _min,
       close: _min,
+      a1: quantile(prices, 1 / 5),
+      a2: quantile(prices, 2 / 5),
+      a3: quantile(prices, 3 / 5),
+      a4: quantile(prices, 4 / 5),
     })
   }
 
   return arr
 }
+
+const listings = getData(rawListings)
 
 function MomentChart({ width, height, ratio }) {
   const margin = { left: 0, right: 40, top: 0, bottom: 24 }
@@ -51,10 +63,8 @@ function MomentChart({ width, height, ratio }) {
     (sample) => sample.date
   )
 
-  const { data, xScale, xAccessor, displayXAccessor } = xScaleProvider(
-    getData(listings)
-  )
-  const yExtents = (sample) => [sample.low * 1.5, 0]
+  const { data, xScale, xAccessor, displayXAccessor } = xScaleProvider(listings)
+  const yExtents = (sample) => [sample.high, 0]
   const barChartExtents = (data) => {
     return data.volume
   }
@@ -72,8 +82,14 @@ function MomentChart({ width, height, ratio }) {
 
   const radius = (data) => 3
   const yAccessor = (data) => data.low
+  const yAccessor1 = (data) => data.a1
+  const yAccessor2 = (data) => data.a2
+  const yAccessor3 = (data) => data.a3
+  const yAccessor4 = (data) => data.a4
   const dateFormat = timeFormat("%Y-%m-%d %H:%M:%S")
   const numberFormat = format(".2f")
+
+  const yListAccessor = (data) => data.prices
 
   return (
     <ChartCanvas
@@ -90,13 +106,45 @@ function MomentChart({ width, height, ratio }) {
     >
       <Chart id={1} yExtents={yExtents}>
         {/* <CandlestickSeries /> */}
-        <ScatterSeries
-          yAccessor={yAccessor}
+        {/* <ScatterNebula
+          yListAccessor={yListAccessor}
           marker={CircleMarker}
           markerProps={{ r: radius }}
-        />
+        /> */}
         <LineSeries
           yAccessor={yAccessor}
+          // marker={CircleMarker}
+          // markerProps={{ r: radius }}
+        />
+        <LineSeries
+          yAccessor={yAccessor1}
+          strokeStyle="rgba(102, 229, 67, 1)"
+          strokeWidth={2}
+          hoverStrokeWidth={4}
+          // marker={CircleMarker}
+          // markerProps={{ r: radius }}
+        />
+        <LineSeries
+          yAccessor={yAccessor2}
+          strokeStyle="rgba(255, 225, 0, 1)"
+          strokeWidth={2}
+          hoverStrokeWidth={4}
+          // marker={CircleMarker}
+          // markerProps={{ r: radius }}
+        />
+        <LineSeries
+          yAccessor={yAccessor3}
+          strokeStyle="rgba(229, 164, 67, 1)"
+          strokeWidth={2}
+          hoverStrokeWidth={4}
+          // marker={CircleMarker}
+          // markerProps={{ r: radius }}
+        />
+        <LineSeries
+          yAccessor={yAccessor4}
+          strokeStyle="rgba(229, 85, 67, 1)"
+          strokeWidth={2}
+          hoverStrokeWidth={4}
           // marker={CircleMarker}
           // markerProps={{ r: radius }}
         />
@@ -141,8 +189,8 @@ function MomentChart({ width, height, ratio }) {
         origin={barChartOrigin}
         yExtents={barChartExtents}
       >
-        <BarSeries yAccessor={volumeSeries} />
-        <YAxis orient="left" />
+        {/* <BarSeries yAccessor={volumeSeries} /> */}
+        {/* <YAxis orient="left" /> */}
       </Chart>
     </ChartCanvas>
   )
