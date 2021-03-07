@@ -1,7 +1,11 @@
 import express from "express"
 
+import conn from "./database/database"
+import apolloServer from "./apollo/apollo"
+
 // Create the express app
 const app = express()
+apolloServer.applyMiddleware({ app })
 
 // Routes and middleware
 // app.use(/* ... */)
@@ -11,6 +15,7 @@ const app = express()
 app.use(function fourOhFourHandler(req, res) {
   res.status(404).send()
 })
+
 app.use(function fiveHundredHandler(err, req, res, next) {
   console.error(err)
   res.status(500).send()
@@ -25,5 +30,5 @@ app.listen(process.env.PORT || 5000, function (err) {
   console.log("Started at http://localhost:5000")
 })
 
-import scrape from "./private/scrape"
+// import scrape from "./private/scrape"
 // scrape().then()
