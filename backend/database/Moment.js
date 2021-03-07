@@ -23,5 +23,6 @@ const momentSchema = new Schema(
   },
   { versionKey: false }
 )
+momentSchema.index({ id: 1, time: 1 }, { unique: true })
 
 export default model("Listings", momentSchema)

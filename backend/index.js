@@ -1,5 +1,4 @@
-"use strict"
-const express = require("express")
+import express from "express"
 
 // Create the express app
 const app = express()
@@ -27,4 +26,4 @@ app.listen(process.env.PORT || 5000, function (err) {
 })
 
 import scrape from "./private/scrape"
-scrape()
+// scrape().then()
