@@ -11,6 +11,17 @@
       "restart": true,
       "runtimeArgs": ["--inspect"],
       "sourceMaps": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Backend",
+      "program": "${workspaceFolder}/backend/index.js",
+      "cwd": "${workspaceFolder}/backend",
+      "runtimeExecutable": "${workspaceFolder}/backend/node_modules/.bin/babel-node",
+      "protocol": "inspector",
+      "restart": true,
+      "sourceMaps": true
     }
   ]
 }
