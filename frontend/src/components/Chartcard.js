@@ -10,6 +10,7 @@ function Chartcard(props) {
             <div class="bg-green-500 shadow-inner-2xl">
               <p>Player/Moment Flavor</p>
               <ul>
+                {/* need typedefs and backend resolvers */}
                 <li>moment.image(TS moment card)</li>
                 <li>moment.id</li>
                 <li>moment.serializationRange</li>
