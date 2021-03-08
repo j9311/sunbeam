@@ -13,8 +13,8 @@ export const Set = gql`
     id: String!
 
     name: String
-    description: String
     image: String
+    rarity: String
 
     moments: [Moment]
     uniqueMoments: Int
@@ -29,17 +29,22 @@ export const Moment = gql`
     set: Set
     image: String
     description: String
+
+    name: String
+    jerseyNumber: Int
+    team: String
+    date: Float
   }
 `
 export const MomentListing = gql`
   type Price {
-    price: Int
-    serial: Int
+    price: Float
+    serial: Float
   }
 
   type MomentListing {
     moment: Moment
-    time: Int
+    time: Float
     prices: [Price]
   }
 `
