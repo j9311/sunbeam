@@ -1,14 +1,15 @@
 import { Schema, model } from "mongoose"
-import Moment from "./Moment"
 
-const setSchema = new Schema(
+const codexSetSchema = new Schema(
   {
     id: { type: String, index: true, unique: true },
     name: String,
     description: Boolean,
-    moments: [Moment],
+    momentIDs: [String],
+    rarity: String,
+    image: String,
   },
   { versionKey: false }
 )
 
-export default model("Set", setSchema)
+export default model("CodexSet", codexSetSchema)
