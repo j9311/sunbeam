@@ -1,7 +1,30 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Menu from "./Menu"
+import axios from "axios"
+import Play from "./Play"
 
 function Search(props) {
+  const [search, setSearch] = useState("")
+  const [plays, setPlays] = useState([])
+
+  // useEffect(() => {
+  //   axios
+  //     .get("", { params: { search } })
+  //     .then((res) => {
+  //       setPlays(res.data)
+  //       console.log(res.data)
+  //     })
+  //     .catch((err) => console.log(err))
+  // }, [])
+
+  const handleChange = (e) => {
+    setSearch(e.target.value)
+  }
+
+  const filteredPlays = plays.filter((play) =>
+    play.name.toLowerCase().includes(search.toLowerCase())
+  )
+
   return (
     <div>
       <Menu />
@@ -46,10 +69,10 @@ function Search(props) {
                         <div class="mt-1 flex rounded-md shadow-sm">
                           <input
                             type="text"
-                            name="company_website"
-                            id="company_website"
+                            name="moment-search"
                             class="focus:ring-green-500 focus:border-green-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-green-300"
-                            placeholder="search for player or moment name"
+                            placeholder="search for player name"
+                            onChange={handleChange}
                           />
                         </div>
                       </div>
@@ -72,6 +95,22 @@ function Search(props) {
           </div>
         </div>
       </main>
+      <div>
+        {filteredPlays.map((play) => {
+          return (
+            <Play
+              key={play.id ?? "N/A"}
+              date={play.date ?? "N/A"}
+              jno={play.jerseyNumber ?? "N/A"}
+              name={play.name ?? "N/A"}
+              rarity={play.rarity ?? "N/A"}
+              set={play.set ?? "N/A"}
+              image={play.image ?? "N/A"}
+              type={play.type ?? "N/A"}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

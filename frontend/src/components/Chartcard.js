@@ -1,7 +1,26 @@
 import React from "react"
 import MomentChart from "./MomentChart"
+import { BsQuestionCircle } from "react-icons/bs"
 
 function Chartcard(props) {
+  // var modal = document.querySelector(".modal")
+  // var trigger = document.querySelector(".trigger")
+  // var closeButton = document.querySelector(".close-button")
+
+  // function toggleModal() {
+  //   modal.classList.toggle("show-modal")
+  // }
+
+  // function windowOnClick(event) {
+  //   if (event.target === modal) {
+  //     toggleModal()
+  //   }
+  // }
+
+  // trigger.addEventListener("click", toggleModal)
+  // closeButton.addEventListener("click", toggleModal)
+  // window.addEventListener("click", windowOnClick)
+
   return (
     <div>
       <div class="bg-gray-100 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 shadow-inner-2xl">

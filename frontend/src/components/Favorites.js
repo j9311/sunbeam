@@ -3,6 +3,7 @@ import React from "react"
 import Menu from "./Menu"
 import Momentcard from "./Momentcard"
 import Momentcardhead from "./Momentcardhead"
+import Favoritecard from "./Favoritecard"
 function Favorites(props) {
   return (
     <div>
@@ -14,11 +15,11 @@ function Favorites(props) {
       </header>
       <main>
         <Momentcardhead />
-        <Momentcard />
-        <Momentcard />
-        <Momentcard />
-        <Momentcard />
-        <Momentcard />
+        <Favoritecard />
+        <Favoritecard />
+        <Favoritecard />
+        <Favoritecard />
+        <Favoritecard />
       </main>
     </div>
   )

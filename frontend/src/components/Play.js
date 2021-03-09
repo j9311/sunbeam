@@ -1,6 +1,6 @@
 import React from "react"
 
-function Momentcard(props) {
+const Play = ({ date, jno, name, rarity, set, image, type }) => {
   return (
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:mx-6 lg:-mx-8">
@@ -14,31 +14,29 @@ function Momentcard(props) {
                       <div class="flex-shrink-0 h-10 w-10">
                         <img
                           class="h-15 w-15 rounded-full"
-                          src="https://assets.nbatopshot.com/resize/editions/1_base_set_common/40ebbf73-582a-4e8c-bf6e-627aee3d6f83/play_40ebbf73-582a-4e8c-bf6e-627aee3d6f83_1_base_set_common_capture_Hero_2880_2880_Black.jpg?width=780&quality=80"
-                          alt=""
+                          src={image}
+                          alt="set_im"
                         />
                       </div>
                       <div class="ml-4">
                         <div class="text-sm font-medium text-gray-900">
-                          CJ McCollum
+                          {name}
                         </div>
-                        <div class="text-sm text-gray-500">
-                          Dunk; Nov. 10, 2019
-                        </div>
+                        <div class="text-sm text-gray-500">{rarity}</div>
                       </div>
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">Base Set (Series 1)</div>
-                    <div class="text-sm text-gray-500">Edition Size: 3999</div>
+                    <div class="text-sm text-gray-900">{set}</div>
+                    <div class="text-sm text-gray-500">{date}</div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-700 text-gray-50">
-                      Common
+                      {rarity}
                     </span>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin
+                    {type}
                   </td>
                   <td class="flex flex-row m-3 whitespace-nowrap text-right text-sm font-medium">
                     <button
@@ -66,4 +64,4 @@ function Momentcard(props) {
   )
 }
 
-export default Momentcard
+export default Play

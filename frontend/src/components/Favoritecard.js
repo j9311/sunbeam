@@ -1,6 +1,6 @@
 import React from "react"
 
-function Momentcard(props) {
+function Favoritecard(props) {
   return (
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:mx-6 lg:-mx-8">
@@ -66,4 +66,4 @@ function Momentcard(props) {
   )
 }
 
-export default Momentcard
+export default Favoritecard

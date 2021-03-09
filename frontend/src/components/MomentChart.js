@@ -43,8 +43,8 @@ function getData(listings) {
       prices: prices,
       high: Math.min(barrier, _max),
       low: _min,
-      open: _min,
-      close: _min,
+      open: _fakemin,
+      close: Math.min(barrier, _fakemax),
       a1: quantile(prices, 1 / 5),
       a2: quantile(prices, 2 / 5),
       a3: quantile(prices, 3 / 5),
@@ -156,17 +156,22 @@ function MomentChart({ width, height, ratio }) {
               x: dateFormat(xAccessor(currentItem)),
               y: [
                 {
-                  label: "Lowest",
+                  label: "LowList",
                   value: currentItem.low && numberFormat(currentItem.low),
+                },
+                {
+                  label: "HighList",
+                  value: currentItem.high && numberFormat(currentItem.high),
                 },
                 {
                   label: "Volume",
                   value: currentItem.volume && numberFormat(currentItem.volume),
                 },
-                {
-                  label: "Highest",
-                  value: currentItem.high && numberFormat(currentItem.high),
-                },
+                { label: "RH", value: parseInt([currentItem.a4]) },
+                { label: "R4", value: parseInt([currentItem.a3]) },
+                { label: "R3", value: parseInt([currentItem.a2]) },
+                { label: "R2", value: parseInt([currentItem.a1]) },
+                { label: "RL", value: parseInt([currentItem.low]) },
                 // {
                 //   label: "DPS",
                 //   value: currentItem.DPS && numberFormat(currentItem.DPS),

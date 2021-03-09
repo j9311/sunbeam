@@ -14,6 +14,7 @@ import Login from "./components/Login"
 import Redlines from "./components/Redlines"
 import Favorites from "./components/Favorites"
 import Releases from "./components/Releases"
+import MomentSpec from "./components/MomentSpec"
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route exact path="/Redlines" component={Redlines} />
       <Route exact path="/Releases" component={Releases} />
       <Route exact path="/Dashboard" component={Dashboard} />
+      <Route exact path="/MomentSpec" component={MomentSpec} />
     </Router>
     // </AuthProvider>
   )
