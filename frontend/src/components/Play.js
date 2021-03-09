@@ -22,7 +22,7 @@ const Play = ({ date, jno, name, rarity, set, image, type }) => {
                         <div class="text-sm font-medium text-gray-900">
                           {name}
                         </div>
-                        <div class="text-sm text-gray-500">{rarity}</div>
+                        <div class="text-sm text-gray-500">{type}</div>
                       </div>
                     </div>
                   </td>
@@ -45,13 +45,6 @@ const Play = ({ date, jno, name, rarity, set, image, type }) => {
                     >
                       <span class="absolute left-0 inset-y-0 flex items-center pl-3"></span>
                       Go To
-                    </button>
-                    <button
-                      type="submit"
-                      class="group relative w-5em flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                      <span class="absolute left-0 inset-y-0 flex items-center pl-3"></span>
-                      Remove
                     </button>
                   </td>
                 </tr>

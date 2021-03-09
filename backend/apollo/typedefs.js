@@ -4,7 +4,7 @@ export const Query = gql`
   type Query {
     getAllSets: [Set]
     getSet(id: String!): Set
-    getMoment(id: String!): Moment
+    getMoment(id: String!, setID: String): Moment
   }
 `
 
