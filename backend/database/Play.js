@@ -13,6 +13,8 @@ const playSchema = new Schema(
     descrption: String,
     image: String,
     jerseyNumber: Number,
+    playType: String,
+    playCategory: String,
     team: String,
     date: Number,
   },

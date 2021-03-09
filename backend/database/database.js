@@ -8,6 +8,8 @@ mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost/topshot", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
     poolSize: 200,
   })
   .then(async function () {
