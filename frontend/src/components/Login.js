@@ -2,10 +2,11 @@ import React from "react"
 
 function Login(props) {
   return (
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-screen flex items-center justify-center bg-gray-800 py-12 px-4 sm:px-6 lg:px-8 flex-col">
+      <img src="toasttoast.svg" className="w-20" />
       <div class="max-w-md w-full space-y-8">
         <div>
-          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-100">
             Sign in to your account
           </h2>
           <p class="mt-2 text-center text-sm text-gray-600"></p>
@@ -51,7 +52,7 @@ function Login(props) {
                 type="checkbox"
                 class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
               />
-              <label for="remember_me" class="ml-2 block text-sm text-gray-900">
+              <label for="remember_me" class="ml-2 block text-sm text-gray-100">
                 Remember me
               </label>
             </div>
