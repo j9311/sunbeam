@@ -37,7 +37,7 @@ function Menu(props) {
                     href="http://localhost:3000/Redlines"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Redlines
+                    Feed
                   </a>
 
                   <a
@@ -202,7 +202,7 @@ function Menu(props) {
               href="http://localhost:3000/Redlines"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
-              Redlines
+              Feed
             </a>
 
             <a
