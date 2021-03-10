@@ -10,6 +10,8 @@ module.exports = {
 
     fontFamily: {
       display: ["Teko", "Arial", "sans-serif"],
+      display2: ["Anton", "Arial", "sans-serif"],
+      display3: ['"Squada One"', "Arial", "sans-serif"],
       body: ["Heebo", "sans-serif"],
       bungee: ["Bungee", "sans-serif"],
       serial: ['"Libre Barcode 39 Text"'],
