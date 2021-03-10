@@ -2,9 +2,12 @@ import express from "express"
 
 import conn from "./database/database"
 import apolloServer from "./apollo/apollo"
+import cors from "cors"
 
 // Create the express app
 const app = express()
+app.use(cors({ origin: /^http(s)?:\/\/(localhost|superdomain.com)(:3000)?/ }))
+
 apolloServer.applyMiddleware({ app })
 
 // Routes and middleware

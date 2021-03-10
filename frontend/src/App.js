@@ -23,7 +23,7 @@ import MomentSpec from "./components/MomentSpec"
 const httpLink = createHttpLink({
   uri:
     process.env.NODE_ENV === "development"
-      ? "http://localhost:5000"
+      ? "http://localhost:5000/graphql"
       : "https://spy-glass.herokuapp.com",
 })
 
