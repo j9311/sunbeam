@@ -5,6 +5,7 @@ export const Query = gql`
     getAllSets: [Set]
     getSet(id: String!): Set
     getMoment(id: String!, setID: String): Moment
+    verifyLogin(token: String!): User
   }
 `
 
@@ -48,5 +49,13 @@ export const MomentListing = gql`
     moment: Moment
     time: Float
     prices: [Price]
+  }
+`
+
+export const User = gql`
+  type User {
+    email: String
+    name: String
+    picture: String
   }
 `

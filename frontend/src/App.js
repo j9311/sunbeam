@@ -24,11 +24,13 @@ import Menu from "./components/Menu"
 import Footer from "./components/Footer"
 import TermsofService from "./components/TermsofService"
 
+import { UserProvider } from "./Contexts"
+
 const httpLink = createHttpLink({
   uri:
     process.env.NODE_ENV === "development"
-      ? "http://localhost:5000/graphql"
-      : "https://spy-glass.herokuapp.com",
+      ? "http://localhost:5000/api/v1/graphql"
+      : "https://spy-glass.herokuapp.com/api/v1/graphql",
 })
 
 const client = new ApolloClient({
@@ -39,24 +41,25 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    // <AuthProvider>
-    <ApolloProvider client={client}>
-      <Router>
-        <Menu />
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/set/:setID" component={CodexSet} />
-          <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/search" component={Search} />
-          <Route exact path="/redlines" component={Redlines} />
-          <Route exact path="/releases" component={Releases} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/moment-spec" component={MomentSpec} />
-          <Route exact path="/termsofservice" component={TermsofService} />
-        </Switch>
-        <Footer />
-      </Router>
-    </ApolloProvider>
+    <UserProvider>
+      <ApolloProvider client={client}>
+        <Router>
+          <Menu />
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/set/:setID" component={CodexSet} />
+            <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/redlines" component={Redlines} />
+            <Route exact path="/releases" component={Releases} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/moment-spec" component={MomentSpec} />
+            <Route exact path="/termsofservice" component={TermsofService} />
+          </Switch>
+          <Footer />
+        </Router>
+      </ApolloProvider>
+    </UserProvider>
   )
 }
 

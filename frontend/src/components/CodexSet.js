@@ -3,8 +3,7 @@ import { useQuery, gql } from "@apollo/client"
 
 import "./CodexSet.css"
 import MomentPreview from "./MomentPreview"
-
-import { CircleLoader } from "react-spinners"
+import Spinner from "./Spinner"
 
 const GET_SET = gql`
   query GetSet($setID: String!) {
@@ -48,7 +47,7 @@ export default function CodexSet(props) {
       <div className="bg2">
         <div className="pt-8">
           {loading ? (
-            <CircleLoader size={100} />
+            <Spinner />
           ) : error ? (
             <div>
               <h1>Error fetching sets</h1>

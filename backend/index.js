@@ -1,14 +1,24 @@
 import express from "express"
 
 import conn from "./database/database"
-import apolloServer from "./apollo/apollo"
-import cors from "cors"
 
 // Create the express app
 const app = express()
+
+import cors from "cors"
 app.use(cors({ origin: /^http(s)?:\/\/(localhost|superdomain.com)(:3000)?/ }))
 
-apolloServer.applyMiddleware({ app })
+import cookieParser from "cookie-parser"
+app.use(cookieParser())
+
+import apolloServer from "./apollo/apollo"
+apolloServer.applyMiddleware({ app, path: "/api/v1/graphql" })
+
+import bodyParser from "body-parser"
+app.use(bodyParser.json())
+
+import * as Auth from "./auth"
+app.post("/api/v1/auth/google", Auth.googleLogin)
 
 // Routes and middleware
 // app.use(/* ... */)

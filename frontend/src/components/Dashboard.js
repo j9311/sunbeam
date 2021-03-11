@@ -8,6 +8,7 @@ import { CircleLoader } from "react-spinners"
 import { useBarcode } from "react-barcodes"
 
 import CodexPreview from "./CodexPreview"
+import Spinner from "./Spinner"
 
 const GET_SETS = gql`
   query GetSets {
@@ -45,7 +46,7 @@ function Dashboard(props) {
       <main className="flex flex-col justify-center items-center text-white mt-8">
         <h1 className="font-display3 text-9xl uppercase select-none">Sets</h1>
         {loading ? (
-          <CircleLoader size={100} />
+          <Spinner />
         ) : error ? (
           <div>
             <h1>Error fetching sets</h1>

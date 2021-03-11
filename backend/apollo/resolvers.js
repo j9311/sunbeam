@@ -1,5 +1,7 @@
 import CodexSet from "../database/CodexSet"
 import Play from "../database/Play"
+import User from "../database/User"
+import * as Auth from "../auth"
 
 // import {gql} from 'apollo-server'
 export const Query = {
@@ -19,6 +21,19 @@ export const Query = {
     console.log(args, context, info)
     moment.setID = args.setID
     return moment
+  },
+
+  verifyLogin: async (parent, args, context, info) => {
+    try {
+      const loggedIn = await Auth.verify(args.token)
+      if (loggedIn) {
+        const user = await User.findOne({ email })
+        return user._doc
+      }
+      return null
+    } catch (e) {
+      return null
+    }
   },
 }
 
