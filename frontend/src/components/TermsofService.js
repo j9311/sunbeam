@@ -6,8 +6,8 @@ function TermsofService(props) {
     <div className="mx-auto w-3/4 flex flex-col align-center text-center">
       <h1>TERMS OF USE</h1>
       <p>Last updated March 10, 2021</p>
-
-      <h1>DISCLAIMER Updated: March8, 2021</h1>
+      <br />
+      <h1>DISCLAIMER Updated: March 8, 2021</h1>
       <p>
         The information provided by NFToast on the website is for general
         informational purposes only. All information on the Site is provided in

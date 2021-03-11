@@ -64,7 +64,6 @@ function Dashboard(props) {
 
   return (
     <div>
-      <Menu />
       <header class="bg-gray-600  shadow-2xl">
         <div class="font-display1 max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col">
           {/* <h1 class="text-3xl font-bold text-gray-50">Welcome to Edge!</h1> */}
