@@ -5,7 +5,7 @@ import Popup from "reactjs-popup"
 import { useQuery, gql } from "@apollo/client"
 
 import { CircleLoader } from "react-spinners"
-import CodexPreview from "./CodexPreview"
+import { useBarcode } from "react-barcodes"
 
 const GET_SETS = gql`
   query GetSets {
@@ -19,6 +19,44 @@ const GET_SETS = gql`
   }
 `
 
+const RARITIES = {
+  SET_VISUAL_COMMON: "rarity-common",
+  SET_VISUAL_RARE: "rarity-rare",
+  SET_VISUAL_LEGENDARY: "rarity-legendary",
+  SET_VISUAL_ULTIMATE: "rarity-ultimate",
+}
+
+function Moment({ id, name, image, rarity, uniqueMoments }) {
+  const { inputRef } = useBarcode({
+    value: name.substr(0, 10),
+    options: {
+      lineColor: "#f0f0f0",
+      background: "#00000000",
+      displayValue: false,
+      height: 32,
+    },
+  })
+  return (
+    <div className="w-full md:w-1/3 lg:w-1/4 p-12 text-gray-50 select-none">
+      <div class={`group relative cursor-pointer card ${RARITIES[rarity]}`}>
+        <div className="absolute top-0 bottom-0 w-full rarity-round"></div>
+        <img src={image} alt={name} className="rounded-xl rarity z-0" />
+        <div className="rounded-xl absolute top-0 bottom-0 w-full z-10 flex flex-col justify-center bg-black bg-opacity-40 group-hover:bg-opacity-10">
+          <div className="bg-black bg-opacity-80 text-center py-2">
+            <h3 className="font-bungee text-xl">{name}</h3>
+            <p>{uniqueMoments} Moments</p>
+            <svg
+              ref={inputRef}
+              className="w-full"
+              preserveAspectRatio="false"
+            ></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Dashboard(props) {
   const { loading, error, data } = useQuery(GET_SETS, {
     variables: { language: "english" },
@@ -26,8 +64,9 @@ function Dashboard(props) {
 
   return (
     <div>
+      <Menu />
       <header class="bg-gray-600  shadow-2xl">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col">
+        <div class="font-display1 max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col">
           {/* <h1 class="text-3xl font-bold text-gray-50">Welcome to Edge!</h1> */}
           <p className=" text-xl text-gray-200">
             Welcome to NFToast - TS, your home for NBA Top Shot market analysis.
@@ -52,7 +91,7 @@ function Dashboard(props) {
         ) : (
           <div className="container flex flex-wrap justify-evenly">
             {data.getAllSets.map((set) => (
-              <CodexPreview key={set.id} {...set} />
+              <Moment key={set.id} {...set} />
             ))}
           </div>
         )}

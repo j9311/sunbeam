@@ -21,6 +21,8 @@ import Releases from "./components/Releases"
 import MomentSpec from "./components/MomentSpec"
 import CodexSet from "./components/CodexSet"
 import Menu from "./components/Menu"
+import Footer from "./components/Footer"
+import TermsofService from "./components/TermsofService"
 
 const httpLink = createHttpLink({
   uri:
@@ -50,7 +52,9 @@ function App() {
           <Route exact path="/releases" component={Releases} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/moment-spec" component={MomentSpec} />
+          <Route exact path="/termsofservice" component={TermsofService} />
         </Switch>
+        <Footer />
       </Router>
     </ApolloProvider>
   )
