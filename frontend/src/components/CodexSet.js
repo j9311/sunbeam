@@ -54,7 +54,7 @@ export default function CodexSet(props) {
             </div>
           ) : (
             <div>
-              <div className="container mx-auto text-center">
+              <div className="container mx-auto text-center select-none">
                 <h4 className="text-2xl font-display3">Viewing Set</h4>
                 <h1 className="text-9xl font-display3">
                   "{data?.getSet.name}"
