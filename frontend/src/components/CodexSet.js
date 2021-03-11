@@ -61,6 +61,9 @@ export default function CodexSet(props) {
                 <h1 className="text-9xl font-display3">
                   "{data?.getSet.name}"
                 </h1>
+                <p className="font-display2">
+                  Click on a Player's card for Moment details.
+                </p>
               </div>
 
               <div className="flex flex-row flex-wrap">

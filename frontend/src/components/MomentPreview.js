@@ -14,19 +14,22 @@ export default function MomentPreview({
 }) {
   console.log("date", date)
   return (
-    <div className="block lg:w-1/2 p-4 text-gray-50">
+    <div className="block xl:w-1/3 lg:w-1/2 md-:w-1/2 w-full p-4 text-gray-50">
       <Link
         to={"/moment/" + setID + "/" + playID}
         className="flex p-6 bg-gray-50 bg-opacity-10 hover:bg-opacity-20 rounded-sm"
       >
         <img src={image} alt={name} className="w-32 h-32" />
         <div className="flex flex-col flex-grow px-8">
-          <h2 className="font-display text-3xl">{name}</h2>
+          <h2 className="font-display text-2xl">{name}</h2>
           <p>Team: {team}</p>
-          <p>Moment: {playType}</p>
+          <p>Play Type: {playType}</p>
           <p>Date: {new Date(date).toDateString()}</p>
         </div>
-        <h3 className="font-display2 text-9xl select-none">{jerseyNumber}</h3>
+        <h3 className="font-display2 text-5xl select-none flex flex-col text-right">
+          {" "}
+          <span className="text-3xl font-display">No.</span> {jerseyNumber}
+        </h3>
       </Link>
     </div>
   )
