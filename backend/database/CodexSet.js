@@ -10,5 +10,6 @@ const codexSetSchema = new Schema(
   },
   { versionKey: false }
 )
+codexSetSchema.index({ name: "text" })
 
 export default model("CodexSet", codexSetSchema)

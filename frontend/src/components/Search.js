@@ -1,35 +1,77 @@
 import React, { useEffect, useState } from "react"
-import Menu from "./Menu"
+import { useQuery, gql } from "@apollo/client"
 
 import Play from "./Play"
 
+const SEARCH_PLAYS = gql`
+  query AllMomentsSearchQuery($search: String!) {
+    searchMoments(search: $search) {
+      playID
+      setID
+      image
+
+      name
+      jerseyNumber
+      team
+      playCategory
+      playType
+      date
+    }
+  }
+`
+
 function Search(props) {
   const [search, setSearch] = useState("")
-  const [plays, setPlays] = useState([])
+  const [searchInput, setSearchInput] = useState("")
+  // const [plays, setPlays] = useState([])
 
-  // useEffect(() => {
-  //   axios
-  //     .get("", { params: { search } })
-  //     .then((res) => {
-  //       setPlays(res.data)
-  //       console.log(res.data)
-  //     })
-  //     .catch((err) => console.log(err))
-  // }, [])
+  const { loading, error, data } = useQuery(SEARCH_PLAYS, {
+    variables: { search },
+  })
 
-  const handleChange = (e) => {
-    setSearch(e.target.value)
+  const plays = data?.searchMoments ?? []
+
+  let timeout
+  function debounce(evt) {
+    clearTimeout(timeout)
+    const val = evt.target.value
+    setSearchInput(val)
+
+    if (val.length > 3) {
+      timeout = setTimeout(() => {
+        runSearch(val)
+      }, 400)
+    }
   }
 
-  const filteredPlays = plays.filter((play) =>
-    play.name.toLowerCase().includes(search.toLowerCase())
-  )
+  const keyDown = (evt) => {
+    if (evt.code.toLowerCase() in ["return", "enter"]) {
+      evt.preventDefault()
+      runSearch()
+    }
+  }
+
+  const clickSearch = (evt) => {
+    evt.preventDefault()
+    runSearch()
+  }
+
+  const runSearch = (str) => {
+    clearTimeout(timeout)
+    console.log("Str", str, searchInput)
+
+    if ((str ?? searchInput).length > 3) {
+      setSearch(str ?? searchInput)
+    } else {
+      alert("Please type more than 3 characters for your search query!")
+    }
+  }
 
   return (
-    <div className="font-display">
+    <div className="font-body">
       <header class="bg-gray-600">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold text-gray-50">Search</h1>
+          <h1 class="font-display text-3xl font-bold text-gray-50">Search</h1>
         </div>
       </header>
       <main>
@@ -41,7 +83,7 @@ function Search(props) {
                   Current supported search parameters:
                 </h2>
                 <hr className="flex mx-4"></hr>
-                <ul class="mt-1 text-sm font-bold text-gray-150 p-5">
+                <ul class="mt-1 text-sm font-semibold text-gray-150 p-5">
                   <li>Player names. Moment names.</li>
                   <li>Set and Rarity coming soon.</li>
                   <li>
@@ -70,13 +112,14 @@ function Search(props) {
                           <input
                             type="text"
                             name="moment-search"
-                            class="focus:ring-green-500 focus:border-gray-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                            class="text-black focus:ring-green-500 focus:border-gray-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                             placeholder="search for player name"
-                            onChange={handleChange}
+                            onChange={debounce}
+                            onKeyDown={keyDown}
                           />
                           <button
-                            type="submit"
-                            class="flex justify-center py-4 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                            onClick={clickSearch}
+                            class="ml-4 flex justify-center py-4 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                           >
                             Search
                           </button>
@@ -91,10 +134,10 @@ function Search(props) {
         </div>
       </main>
       <div>
-        {filteredPlays.map((play) => {
+        {plays.map((play) => {
           return (
             <Play
-              key={play.id ?? "N/A"}
+              key={play.setID + "+" + play.playID ?? "N/A"}
               date={play.date ?? "N/A"}
               jno={play.jerseyNumber ?? "N/A"}
               name={play.name ?? "N/A"}

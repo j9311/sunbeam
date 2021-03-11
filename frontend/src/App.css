@@ -48,8 +48,17 @@ body::before {
   background-color: #272727;
 }
 
+*::-webkit-scrollbar-corner {
+  background-color: #272727;
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
 *::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
   background-color: #0e0e0e;
 }
 

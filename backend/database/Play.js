@@ -9,16 +9,18 @@ import { Schema, model, Connection } from "mongoose"
 const playSchema = new Schema(
   {
     id: { type: String, index: true, unique: true },
-    name: String,
+    name: { type: String, index: true },
     descrption: String,
     image: String,
     jerseyNumber: Number,
-    playType: String,
+    playType: { type: String, index: true },
     playCategory: String,
-    team: String,
+    team: { type: String, index: true },
     date: Number,
   },
   { versionKey: false }
 )
+
+playSchema.index({ name: "text", playType: "text", team: "text" })
 
 export default model("Play", playSchema)

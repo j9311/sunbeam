@@ -2,12 +2,15 @@ import { gql } from "apollo-server"
 
 export const Query = gql`
   type Query {
+    verifyLogin(token: String!): User
+
     getAllSets: [Set]
     getSet(id: String!): Set
     getMoment(id: String!, setID: String): Moment
     getMoments(moments: [MomentArgs]!): [Moment]
-    verifyLogin(token: String!): User
+    searchMoments(search: String!): [Moment]
   }
+
   input MomentArgs {
     setID: String!
     playID: String!

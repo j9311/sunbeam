@@ -52,6 +52,24 @@ export const Query = {
       return null
     }
   },
+
+  searchMoments: async (parent, args, context, info) => {
+    if (!args.search || args.search.length <= 3) {
+      return []
+    }
+    const exp = new RegExp(args.search.replaceAll(/[^a-zA-Z0-9]/g, ""), "i")
+    console.log("Searching woo", exp)
+
+    const plays = await Play.find({
+      $or: [
+        { $text: { $search: args.search } },
+        { name: { $regex: exp } },
+        { team: { $regex: exp } },
+        { playType: { $regex: exp } },
+      ],
+    })
+    return plays
+  },
 }
 
 export const Set = {
