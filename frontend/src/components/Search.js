@@ -13,6 +13,7 @@ const SEARCH_PLAYS = gql`
       set {
         name
         rarity
+        humanRarity
       }
 
       name

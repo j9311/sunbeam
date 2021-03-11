@@ -50,9 +50,44 @@ function getData(listings) {
       a3: quantile(prices, 3 / 5),
       a4: quantile(prices, 4 / 5),
     })
-    // const avgListPrice = () => {
-    //   sample.price.total / sample.
-    // }
+
+    let totListPrices = []
+    let totListVolume = []
+    let totalSaleVolume = []
+    let totalSerialsListed = []
+    let totSerialListValue = []
+    let totSerialSold = []
+    let totSerialSoldValue = []
+
+    const avgListPrice = (totListPrices, totListVolume) => {
+      var ALP = totListPrices / totListVolume
+      return ALP
+    }
+
+    const avgSalePrice = (totSalePrices, totSaleVolume) => {
+      var ASP = totSalePrices / totSaleVolume
+      return ASP
+    }
+
+    const avgSerialOffered = (totSerialsListed, totSerialListValue) => {
+      var ASO = totSerialListValue / totSerialsListed
+      return ASO
+    }
+
+    const avgSellingSerial = (totSerialSold, totSerialSoldValue) => {
+      var ASS = totSerialSoldValue / totSerialSold
+      return ASS
+    }
+
+    const listDollarPerSerial = (ASO, ALP, totListVolume) => {
+      var LDPS = ASO / ALP / totListVolume
+      return LDPS
+    }
+
+    const sellingDollarPerSerial = (ASS, ASP, totSaleVolume) => {
+      var ADPS = ASS / ASP / totSaleVolume
+      return ADPS
+    }
   }
 
   return arr

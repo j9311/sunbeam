@@ -30,8 +30,8 @@ const Play = ({
         <div class="text-sm text-gray-500">{new Date(date).toDateString()}</div>
       </td>
       <td class="px-6 py-4 whitespace-nowrap">
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-700 text-gray-50">
-          {set.rarity}
+        <span class="px-2 inline-flex justify-center text-xs leading-5 font-semibold rounded-full bg-yellow-700 text-gray-50">
+          {set.humanRarity}
         </span>
       </td>
       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

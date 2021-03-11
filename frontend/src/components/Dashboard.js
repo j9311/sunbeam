@@ -29,8 +29,8 @@ function Dashboard(props) {
 
   return (
     <div>
-      <header class="bg-gray-600  shadow-2xl font-display">
-        <div class="font-display1 max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col">
+      <header class="bg-gray-600  shadow-2xl font-display1">
+        <div class=" max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col">
           {/* <h1 class="text-3xl font-bold text-gray-50">Welcome to Edge!</h1> */}
           <p className=" text-xl text-gray-200">
             Welcome to NFToast - TS, your home for NBA Top Shot market analysis.
