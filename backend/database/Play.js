@@ -14,7 +14,7 @@ const playSchema = new Schema(
     image: String,
     jerseyNumber: Number,
     playType: { type: String, index: true },
-    playCategory: String,
+    playCategory: { type: String, index: true },
     team: { type: String, index: true },
     date: Number,
   },

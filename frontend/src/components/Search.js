@@ -10,6 +10,11 @@ const SEARCH_PLAYS = gql`
       setID
       image
 
+      set {
+        name
+        rarity
+      }
+
       name
       jerseyNumber
       team
@@ -28,6 +33,7 @@ function Search(props) {
   const { loading, error, data } = useQuery(SEARCH_PLAYS, {
     variables: { search },
   })
+  console.log(error || data)
 
   const plays = data?.searchMoments ?? []
 
@@ -45,7 +51,7 @@ function Search(props) {
   }
 
   const keyDown = (evt) => {
-    if (evt.code.toLowerCase() in ["return", "enter"]) {
+    if (evt.code?.toLowerCase() in ["return", "enter"]) {
       evt.preventDefault()
       runSearch()
     }
@@ -69,21 +75,23 @@ function Search(props) {
 
   return (
     <div className="font-body">
-      <header class="bg-gray-600">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 class="font-display text-3xl font-bold text-gray-50">Search</h1>
+      <header className="bg-gray-600">
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <h1 className="font-display text-3xl font-bold text-gray-50">
+            Search
+          </h1>
         </div>
       </header>
-      <main>
+      <main className="container mx-auto">
         <div>
-          <div class="md:grid md:grid-cols-3 md:gap-6">
-            <div class="md:col-span-1">
-              <div class="px-4 sm:px-0">
-                <h2 class="text-lg font-medium leading-6 text-gray-190 p-5">
+          <div className="md:grid md:grid-cols-3 md:gap-6">
+            <div className="md:col-span-1">
+              <div className="px-4 sm:px-0">
+                <h2 className="text-lg font-medium leading-6 text-gray-190 p-5">
                   Current supported search parameters:
                 </h2>
                 <hr className="flex mx-4"></hr>
-                <ul class="mt-1 text-sm font-semibold text-gray-150 p-5">
+                <ul className="mt-1 text-sm font-semibold text-gray-150 p-5">
                   <li>Player names. Moment names.</li>
                   <li>Set and Rarity coming soon.</li>
                   <li>
@@ -91,35 +99,35 @@ function Search(props) {
                     volume;listings, sales or otherwise.
                   </li>
                 </ul>
-                <p class="mt-1 text-sm text-gray-175 p-5 font-extralight">
+                <p className="mt-1 text-sm text-gray-175 p-5 font-extralight">
                   Report any bugs or errors to #dev-chat in Ligma.
                 </p>
               </div>
             </div>
-            <div class="mt-5 md:mt-0 md:col-span-2">
+            <div className="mt-5 md:mt-0 md:col-span-2">
               <form action="#" method="POST">
-                <div class="shadow sm:rounded-md sm:overflow-hidden">
-                  <div class="px-4 py-5 space-y-6 sm:p-6">
-                    <div class="grid grid-cols-3 gap-6">
-                      <div class="col-span-3 sm:col-span-2">
+                <div className="shadow sm:rounded-md sm:overflow-hidden">
+                  <div className="px-4 py-5 space-y-6 sm:p-6">
+                    <div className="grid grid-cols-3 gap-6">
+                      <div className="col-span-3 sm:col-span-2">
                         <label
                           for="company_website"
-                          class="block text-sm font-medium text-gray-100"
+                          className="block text-sm font-medium text-gray-100"
                         >
                           Moment Search
                         </label>
-                        <div class="mt-1 flex rounded-md shadow-sm">
+                        <div className="mt-1 flex rounded-md shadow-sm">
                           <input
                             type="text"
                             name="moment-search"
-                            class="text-black focus:ring-green-500 focus:border-gray-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                            className="text-black focus:ring-green-500 focus:border-gray-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                             placeholder="search for player name"
                             onChange={debounce}
                             onKeyDown={keyDown}
                           />
                           <button
                             onClick={clickSearch}
-                            class="ml-4 flex justify-center py-4 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                            className="ml-4 flex justify-center py-4 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                           >
                             Search
                           </button>
@@ -132,23 +140,22 @@ function Search(props) {
             </div>
           </div>
         </div>
+        <div class="flex flex-col">
+          <div class="overflow-x-auto sm:mx-6">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+              <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                  <tbody class="bg-white divide-y divide-gray-200">
+                    {plays.map((play) => {
+                      return <Play {...play} />
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
-      <div>
-        {plays.map((play) => {
-          return (
-            <Play
-              key={play.setID + "+" + play.playID ?? "N/A"}
-              date={play.date ?? "N/A"}
-              jno={play.jerseyNumber ?? "N/A"}
-              name={play.name ?? "N/A"}
-              rarity={play.rarity ?? "N/A"}
-              set={play.set ?? "N/A"}
-              image={play.image ?? "N/A"}
-              type={play.type ?? "N/A"}
-            />
-          )
-        })}
-      </div>
     </div>
   )
 }

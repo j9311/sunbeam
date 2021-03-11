@@ -24,6 +24,8 @@ export const Set = gql`
     name: String
     image: String
     rarity: String
+    cssRarity: String
+    humanRarity: String
 
     moments: [Moment]
     uniqueMoments: Int
@@ -31,8 +33,8 @@ export const Set = gql`
 `
 export const Moment = gql`
   type Moment {
-    playID: String
-    setID: String
+    playID: String!
+    setID: String!
 
     set: Set
     image: String

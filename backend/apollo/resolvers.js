@@ -8,19 +8,18 @@ export const Query = {
   getAllSets: async (parent, args, context, info) =>
     (await CodexSet.find({})).map((set) => {
       set.uniqueMoments = set.momentIDs?.length || 0
-      return set
+      return set._doc
     }),
 
   getSet: async (parent, args, context, info) =>
-    await CodexSet.findOne({ id: args.id }),
+    (await CodexSet.findOne({ id: args.id }))._doc,
 
   getMoment: async (parent, args, context, info) => {
     const moment = await Play.findOne({ setID: args.setID, playID: args.id })
     console.log("id:", args.id, "setID:", args.setID, moment)
     moment.set = await CodexSet.findOne({ id: args.setID })
     console.log(args, context, info)
-    moment.setID = args.setID
-    return moment
+    return moment._doc
   },
 
   getMoments: async (parent, args, context, info) => {
@@ -37,7 +36,7 @@ export const Query = {
         })()
       })
     )
-    return moments
+    return moments.map((moment) => moment._doc)
   },
 
   verifyLogin: async (parent, args, context, info) => {
@@ -66,9 +65,12 @@ export const Query = {
         { name: { $regex: exp } },
         { team: { $regex: exp } },
         { playType: { $regex: exp } },
+        { playCategory: { $regex: exp } },
+        // { rarity: { $regex: exp } },
       ],
     })
-    return plays
+    console.log("plays", plays)
+    return plays.map((play) => play._doc)
   },
 }
 
@@ -85,5 +87,23 @@ export const Set = {
 
       return play._doc
     })
+  },
+
+  cssRarity: (parent, args, context, info) => {
+    return (
+      "rarity-" +
+      (parent.rarity?.replace("SET_VISUAL_", "").toLowerCase() ?? "common")
+    )
+  },
+
+  humanRarity: (parent, args, context, info) => {
+    return parent.rarity?.replace("SET_VISUAL_", "").toLowerCase() ?? "common"
+  },
+}
+
+export const Moment = {
+  set: async (parent, args, context, info) => {
+    console.log("getting set", parent.setID)
+    return (await CodexSet.findOne({ id: parent.setID }))._doc
   },
 }
