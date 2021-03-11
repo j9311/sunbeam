@@ -5,7 +5,7 @@ import { GiGooeyEyedSun } from "react-icons/gi"
 function Menu(props) {
   return (
     <div>
-      <nav class="bg-gray-800  shadow-2xl">
+      <nav class="bg-gray-800  shadow-2xl select-none">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
