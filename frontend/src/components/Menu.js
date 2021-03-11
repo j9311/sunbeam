@@ -5,7 +5,7 @@ import { GiGooeyEyedSun } from "react-icons/gi"
 function Menu(props) {
   return (
     <div>
-      <nav class="bg-gray-800  shadow-2xl select-none">
+      <nav class="bg-gray-800  shadow-2xl select-none font-display">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
@@ -56,13 +56,7 @@ function Menu(props) {
                   to="/"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  Log In
-                </Link>
-                <Link
-                  to="/"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Sign Out
+                  Log In | Out
                 </Link>
                 <button class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                   <span class="sr-only">View notifications</span>
@@ -216,13 +210,7 @@ function Menu(props) {
               to="/"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
-              Log In
-            </Link>
-            <Link
-              to="/"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Sign Out
+              Log In | Out
             </Link>
           </div>
           <div class="pt-4 pb-3 border-t border-gray-700">
@@ -266,7 +254,7 @@ function Menu(props) {
                 to="/"
                 class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
-                Log In / Sign Out
+                Log In | Out
               </Link>
             </div>
           </div>
