@@ -1,6 +1,6 @@
 import "./App.css"
 import React from "react"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import {
   ApolloClient,
   ApolloProvider,
@@ -19,6 +19,8 @@ import Redlines from "./components/Redlines"
 import Favorites from "./components/Favorites"
 import Releases from "./components/Releases"
 import MomentSpec from "./components/MomentSpec"
+import CodexSet from "./components/CodexSet"
+import Menu from "./components/Menu"
 
 const httpLink = createHttpLink({
   uri:
@@ -38,13 +40,17 @@ function App() {
     // <AuthProvider>
     <ApolloProvider client={client}>
       <Router>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/Favorites" component={Favorites} />
-        <Route exact path="/Search" component={Search} />
-        <Route exact path="/Redlines" component={Redlines} />
-        <Route exact path="/Releases" component={Releases} />
-        <Route exact path="/Dashboard" component={Dashboard} />
-        <Route exact path="/MomentSpec" component={MomentSpec} />
+        <Menu />
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/set/:setID" component={CodexSet} />
+          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/redlines" component={Redlines} />
+          <Route exact path="/releases" component={Releases} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/moment-spec" component={MomentSpec} />
+        </Switch>
       </Router>
     </ApolloProvider>
   )

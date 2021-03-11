@@ -8,7 +8,6 @@ import Popup from "reactjs-popup"
 function MomentSpec(props) {
   return (
     <div>
-      <Menu />
       <div className="flex direction-row">
         <h1>PLAYER NAME</h1>
       </div>

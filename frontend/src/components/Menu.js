@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { GiGooeyEyedSun } from "react-icons/gi"
 
 function Menu(props) {
@@ -12,57 +13,57 @@ function Menu(props) {
 
               <div class="hidden md:block ">
                 <div class="ml-10 flex items-baseline space-x-4">
-                  <a
-                    href="http://localhost:3000/Dashboard"
+                  <Link
+                    to="/Dashboard"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Dashboard
-                  </a>
+                  </Link>
 
-                  <a
-                    href="http://localhost:3000/Favorites"
+                  <Link
+                    to="/Favorites"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Favorites
-                  </a>
+                  </Link>
 
-                  <a
-                    href="http://localhost:3000/Search"
+                  <Link
+                    to="/Search"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Search
-                  </a>
+                  </Link>
 
-                  <a
-                    href="http://localhost:3000/Redlines"
+                  <Link
+                    to="/Redlines"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Feed
-                  </a>
+                  </Link>
 
-                  <a
-                    href="http://localhost:3000/Releases"
+                  <Link
+                    to="/Releases"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Releases
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div class="hidden md:block">
               <div class="ml-4 flex items-center md:ml-6">
-                <a
-                  href="http://localhost:3000/"
+                <Link
+                  to="/"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Log In
-                </a>
-                <a
-                  href="http://localhost:3000/"
+                </Link>
+                <Link
+                  to="/"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Sign Out
-                </a>
+                </Link>
                 <button class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                   <span class="sr-only">View notifications</span>
                   <svg
@@ -177,52 +178,52 @@ function Menu(props) {
 
         <div class="md:hidden" id="mobile-menu">
           <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              href="http://localhost:3000/Dashboard"
+            <Link
+              to="/Dashboard"
               class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Dashboard
-            </a>
+            </Link>
 
-            <a
-              href="http://localhost:3000/Favorites"
+            <Link
+              to="/Favorites"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Favorites
-            </a>
+            </Link>
 
-            <a
-              href="http://localhost:3000/Search"
+            <Link
+              to="/Search"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Search
-            </a>
+            </Link>
 
-            <a
-              href="http://localhost:3000/Redlines"
+            <Link
+              to="/Redlines"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Feed
-            </a>
+            </Link>
 
-            <a
-              href="http://localhost:3000/Releases"
+            <Link
+              to="/Releases"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Releases
-            </a>
-            <a
-              href="http://localhost:3000/"
+            </Link>
+            <Link
+              to="/"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Log In
-            </a>
-            <a
-              href="http://localhost:3000/"
+            </Link>
+            <Link
+              to="/"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Sign Out
-            </a>
+            </Link>
           </div>
           <div class="pt-4 pb-3 border-t border-gray-700">
             <div class="flex items-center px-5">
@@ -261,12 +262,12 @@ function Menu(props) {
               </button>
             </div>
             <div class="mt-3 px-2 space-y-1">
-              <a
-                href="http://localhost:3000/"
+              <Link
+                to="/"
                 class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
                 Log In / Sign Out
-              </a>
+              </Link>
             </div>
           </div>
         </div>

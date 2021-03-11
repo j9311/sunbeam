@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 function Login(props) {
   return (
@@ -58,12 +59,12 @@ function Login(props) {
             </div>
 
             <div class="text-sm">
-              <a
-                href="http://localhost:3000/Dashboard"
+              <Link
+                to="/Dashboard"
                 class="font-medium text-green-600 hover:text-green-500"
               >
                 Forgot your password?
-              </a>
+              </Link>
             </div>
           </div>
 
