@@ -12,7 +12,11 @@ const TwitterContainer = (props) => {
 
   return (
     <section className="twitterContainer mx-4">
-      <div className="twitter-embed  h-screen overflow-auto" ref={disRef}>
+      <div
+        className="twitter-embed overflow-auto"
+        ref={disRef}
+        style={{ height: "70vh" }}
+      >
         <a
           className="twitter-timeline"
           data-theme="dark"
