@@ -34,6 +34,9 @@ export const Moment = gql`
     jerseyNumber: Int
     team: String
     date: Float
+
+    playType: String
+    playCategory: String
   }
 `
 export const MomentListing = gql`
