@@ -26,7 +26,7 @@ function Menu(props) {
 
   return (
     <div>
-      <nav class="bg-gray-800  shadow-2xl select-none font-display">
+      <nav class="bg-gray-900  shadow-2xl select-none font-display">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
@@ -75,6 +75,7 @@ function Menu(props) {
               <GoogleLogin
                 clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText="Log in with Google"
+                theme="dark"
                 onSuccess={handleLogin}
                 onFailure={handleLogin}
                 cookiePolicy={"single_host_origin"}

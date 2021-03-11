@@ -51,7 +51,7 @@ function Search(props) {
   }
 
   const keyDown = (evt) => {
-    if (evt.code?.toLowerCase() in ["return", "enter"]) {
+    if (evt.key === "Enter") {
       evt.preventDefault()
       runSearch()
     }
@@ -75,7 +75,7 @@ function Search(props) {
 
   return (
     <div className="font-body">
-      <header className="bg-gray-600">
+      <header className="bg-gray-800 bg-opacity-90">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <h1 className="font-display text-3xl font-bold text-gray-50">
             Search
