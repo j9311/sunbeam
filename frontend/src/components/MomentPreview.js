@@ -23,7 +23,7 @@ export default function MomentPreview({
         <div className="flex flex-col flex-grow px-8">
           <h2 className="font-display text-2xl">{name}</h2>
           <p>Team: {team}</p>
-          <p>Play Type: {playType}</p>
+          <p>{playCategory}</p>
           <p>Date: {new Date(date).toDateString()}</p>
         </div>
         <h3 className="font-display2 text-5xl select-none flex flex-col text-right">

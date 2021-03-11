@@ -5,7 +5,12 @@ export const Query = gql`
     getAllSets: [Set]
     getSet(id: String!): Set
     getMoment(id: String!, setID: String): Moment
+    getMoments(moments: [MomentArgs]!): [Moment]
     verifyLogin(token: String!): User
+  }
+  input MomentArgs {
+    setID: String!
+    playID: String!
   }
 `
 

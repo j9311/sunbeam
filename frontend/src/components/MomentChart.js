@@ -50,6 +50,9 @@ function getData(listings) {
       a3: quantile(prices, 3 / 5),
       a4: quantile(prices, 4 / 5),
     })
+    // const avgListPrice = () => {
+    //   sample.price.total / sample.
+    // }
   }
 
   return arr

@@ -23,6 +23,23 @@ export const Query = {
     return moment
   },
 
+  getMoments: async (parent, args, context, info) => {
+    const momentSearch = args.moments.map((moment) => ({
+      playID: moment.playID,
+      setID: moment.setID,
+    }))
+
+    const moments = await Play.find({ $or: momentSearch })
+    await Promise.all(
+      moments.map((moment) => {
+        return (async () => {
+          moment.set = await CodexSet.find({ id: args.setID })
+        })()
+      })
+    )
+    return moments
+  },
+
   verifyLogin: async (parent, args, context, info) => {
     try {
       const loggedIn = await Auth.verify(args.token)
