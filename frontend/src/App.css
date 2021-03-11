@@ -1,9 +1,23 @@
-.rarity {
-  box-shadow: 0px 0px 4px 0px var(--rarity-color);
+html {
+  background: #000 url("./images/cubes.png");
 }
 
-.card:hover .rarity {
-  box-shadow: 0px 0px 2px 2px var(--rarity-color);
+body::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  backdrop-filter: brightness(0.3);
+}
+
+.rarity {
+  box-shadow: 0px 0px 4px 0px var(--rarity-color);
 }
 
 .rarity-round {

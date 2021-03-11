@@ -80,7 +80,7 @@ function Dashboard(props) {
       </header>
 
       <main className="flex flex-col justify-center items-center text-white mt-8">
-        <h1 className="font-display3 text-9xl uppercase">Sets</h1>
+        <h1 className="font-display3 text-9xl uppercase select-none">Sets</h1>
         {loading ? (
           <CircleLoader size={100} />
         ) : error ? (
@@ -89,7 +89,7 @@ function Dashboard(props) {
             <pre>{error.message}</pre>
           </div>
         ) : (
-          <div className="container flex flex-wrap justify-evenly">
+          <div className="container mx-auto flex flex-wrap justify-evenly">
             {data.getAllSets.map((set) => (
               <Moment key={set.id} {...set} />
             ))}
