@@ -15,7 +15,6 @@ const GET_SET = gql`
       rarity
       uniqueMoments
       moments {
-        id
         playID
         setID
         image
@@ -23,6 +22,9 @@ const GET_SET = gql`
         name
         jerseyNumber
         team
+        playCategory
+        playType
+        date
       }
     }
   }
@@ -34,11 +36,11 @@ export default function CodexSet(props) {
     variables: { setID: props.match.params.setID },
   })
 
-  console.log("Data", data?.getSet.image)
+  console.log("Data", data?.getSet)
 
   return (
     <div
-      className="codex-set bg"
+      className="codex-set bg relative"
       style={{
         "--backgroundImage": `url(${data?.getSet.image})`,
       }}
@@ -53,17 +55,19 @@ export default function CodexSet(props) {
               <pre>{error.message}</pre>
             </div>
           ) : (
-            <div>
-              <div className="container mx-auto text-center select-none">
+            <div className="container mx-auto">
+              <div className="text-center select-none">
                 <h4 className="text-2xl font-display3">Viewing Set</h4>
                 <h1 className="text-9xl font-display3">
                   "{data?.getSet.name}"
                 </h1>
               </div>
 
-              {data?.getSet?.moments.map((moment) => {
-                ;<MomentPreview key={moment.id} {...moment} />
-              })}
+              <div className="flex flex-row flex-wrap">
+                {data?.getSet.moments.map((moment) => (
+                  <MomentPreview key={moment.id} {...moment} />
+                ))}
+              </div>
             </div>
           )}
         </div>

@@ -13,7 +13,7 @@ export const Query = {
     await CodexSet.findOne({ id: args.id }),
 
   getMoment: async (parent, args, context, info) => {
-    const moment = await Play.findOne({ id: args.id })
+    const moment = await Play.findOne({ setID: args.setID, playID: args.id })
     console.log("id:", args.id, "setID:", args.setID, moment)
     moment.set = await CodexSet.findOne({ id: args.setID })
     console.log(args, context, info)
@@ -25,13 +25,15 @@ export const Query = {
 export const Set = {
   moments: async (parent, args, context, info) => {
     console.log("Getting moments", parent.momentIDs)
-    return (await Play.find({ id: { $in: parent.momentIDs } })).map((play) => {
-      console.log("parent", parent.id)
-      play.playID = play.id
-      play.setID = parent.id
-      play.set = parent
+    return (
+      await Play.find({ setID: parent.id, playID: { $in: parent.momentIDs } })
+    ).map((play) => {
+      console.log("parent", parent.id, play.id)
+      console.log("play", play)
+      play._doc.setID = parent.id
+      play._doc.set = { ...parent }
 
-      return play
+      return play._doc
     })
   },
 }

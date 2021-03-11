@@ -21,7 +21,7 @@ export default function CodexSet({ id, name, image, rarity, uniqueMoments }) {
     },
   })
   return (
-    <div className="w-full md:w-1/3 lg:w-1/4 p-12 text-gray-50 select-none">
+    <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-12 text-gray-50 select-none">
       <Link
         to={"/set/" + id}
         class={`set-preview group block relative cursor-pointer ${RARITIES[rarity]}`}

@@ -22,9 +22,8 @@ export const Set = gql`
 `
 export const Moment = gql`
   type Moment {
-    id: String!
-    setID: String!
-    playID: String!
+    playID: String
+    setID: String
 
     set: Set
     image: String
