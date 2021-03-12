@@ -30,10 +30,14 @@ export const Query = {
   },
 
   getMoments: async (parent, args, context, info) => {
-    const momentSearch = args.moments.map((moment) => ({
-      playID: moment.playID,
-      setID: moment.setID,
-    }))
+    const momentSearch = args.moments.map((moment) => {
+      const [setID, playID] = moment.split("+")
+      return { playID, setID }
+    })
+
+    if (momentSearch.length < 1) {
+      return null
+    }
 
     const moments = await Play.find({ $or: momentSearch })
     await Promise.all(

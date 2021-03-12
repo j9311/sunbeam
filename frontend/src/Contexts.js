@@ -22,3 +22,23 @@ export const API_BASE =
   process.env.NODE_ENV === "production"
     ? "https://nftoast.xyz"
     : "http://localhost:5000"
+
+export function AddFavorite(setID, playID) {
+  const favs = JSON.parse(localStorage.favorites || "{}") || {}
+  const id = CombinePlay(setID, playID)
+  favs[id] = !favs[id]
+  localStorage.favorites = JSON.stringify(favs)
+}
+
+export function GetFavorites() {
+  const favs = JSON.parse(localStorage.favorites || "{}") || {}
+  return favs
+}
+
+export function CombinePlay(setID, playID) {
+  return `${setID}+${playID}`
+}
+
+export function IsFavorite(setID, playID) {
+  return !!GetFavorites()[CombinePlay(setID, playID)]
+}

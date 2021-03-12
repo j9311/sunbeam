@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import MomentChart from "./MomentChart"
 // import rawListings from "./listings.json"
 import SpecTable from "./SpecTable"
@@ -6,6 +6,7 @@ import Popup from "reactjs-popup"
 import Spinner from "./Spinner"
 import { useQuery, gql } from "@apollo/client"
 import MomentPreview from "./MomentPreview"
+import { AddFavorite, IsFavorite } from "../Contexts"
 
 const GET_MOMENT = gql`
   query GetMoment($setID: String!, $playID: String!) {
@@ -74,6 +75,17 @@ function MomentSpec(props) {
     transactions,
   } = data?.getMoment || {}
 
+  const [isFavorite, setIsFavorite] = useState(
+    IsFavorite(props.match.params.setID, props.match.params.playID)
+  )
+
+  function favorite() {
+    AddFavorite(setID, playID)
+    setIsFavorite(
+      IsFavorite(props.match.params.setID, props.match.params.playID)
+    )
+  }
+
   return loading ? (
     <Spinner />
   ) : (
@@ -95,9 +107,23 @@ function MomentSpec(props) {
               </div>
             </Popup>
 
-            <button className="group relative w-5em ml-4 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-500">
-              Favorite
-            </button>
+            <div className="inline-flex">
+              <a
+                href={`https://www.nbatopshot.com/listings/p2p/${setID}+${playID}`}
+                target="_blank"
+                rel="noreferrer"
+                className=" mr-4 group relative w-5em ml-4 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-700 hover:bg-blue-500"
+              >
+                View Listings
+              </a>
+
+              <button
+                onClick={favorite}
+                className="group relative w-5em ml-4 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-500"
+              >
+                {isFavorite ? "Unfavorite" : "Favorite"}
+              </button>
+            </div>
           </div>
         </div>
       </div>

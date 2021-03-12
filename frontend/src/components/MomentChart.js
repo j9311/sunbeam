@@ -112,7 +112,6 @@ function getTransactionData(transactions) {
   const groups = group(transactions, grouper)
   groups.forEach((transactions) => {
     const prices = transactions.map((x) => x.price)
-    console.log("HIGH", prices)
     arr.push({
       date: new Date(grouper(transactions[0])),
       open: transactions[0].price,

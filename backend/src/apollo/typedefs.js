@@ -7,13 +7,8 @@ export const Query = gql`
     getAllSets: [Set]
     getSet(id: String!): Set
     getMoment(playID: String!, setID: String): Moment
-    getMoments(moments: [MomentArgs]!): [Moment]
+    getMoments(moments: [String]!): [Moment]
     searchMoments(search: String!): [Moment]
-  }
-
-  input MomentArgs {
-    setID: String!
-    playID: String!
   }
 `
 
