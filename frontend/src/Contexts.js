@@ -20,5 +20,5 @@ export function UserProvider({ children }) {
 
 export const API_BASE =
   process.env.NODE_ENV === "production"
-    ? "https://cooldomain.com"
+    ? "https://nftoast.xyz"
     : "http://localhost:5000"

@@ -24,13 +24,10 @@ import Menu from "./components/Menu"
 import Footer from "./components/Footer"
 import TermsofService from "./components/TermsofService"
 
-import { UserProvider } from "./Contexts"
+import { UserProvider, API_BASE } from "./Contexts"
 
 const httpLink = createHttpLink({
-  uri:
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:5000/api/v1/graphql"
-      : "https://spy-glass.herokuapp.com/api/v1/graphql",
+  uri: API_BASE + "/api/v1/graphql",
 })
 
 const client = new ApolloClient({
