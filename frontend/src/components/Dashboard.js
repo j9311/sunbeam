@@ -29,16 +29,15 @@ function Dashboard(props) {
 
   return (
     <div>
-      <header class="bg-gray-600  shadow-2xl font-display1">
+      <header class="bg-gray-800  shadow-2xl font-display1">
         <div class=" max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col">
           {/* <h1 class="text-3xl font-bold text-gray-50">Welcome to Edge!</h1> */}
-          <p className=" text-xl text-gray-200">
-            Welcome to NFToast - TS, your home for NBA Top Shot market analysis.
-          </p>
+          <p className=" text-3xl text-gray-200">Welcome to NFToast - TS</p>
           <p className=" text-xs text-gray-200">
             Utilize proprietary technology to give you the edge you need to
-            collect and trade Top Shot NFTs. Click on a set to start browsing
-            moments, or head over to the search tab for specific moments.
+            collect and trade Top Shot NFTs. Click on a set below to start
+            browsing moments, or head over to the search tab for specific
+            moments.
           </p>
         </div>
       </header>

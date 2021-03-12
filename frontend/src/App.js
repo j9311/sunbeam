@@ -46,7 +46,7 @@ function App() {
         <Router>
           <Menu />
           <Switch>
-            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/" component={Login} />
             <Route exact path="/set/:setID" component={CodexSet} />
             <Route exact path="/favorites" component={Favorites} />
             <Route exact path="/search" component={Search} />

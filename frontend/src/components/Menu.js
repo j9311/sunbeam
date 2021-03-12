@@ -33,38 +33,38 @@ function Menu(props) {
               <img src="/toasttoast.svg" className="w-5"></img>
 
               <div class="hidden md:block ">
-                <div class="ml-10 flex items-baseline space-x-4">
+                <div class="ml-10 text-lg flex items-baseline space-x-4">
                   <Link
                     to="/Dashboard"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                   >
                     Dashboard
                   </Link>
 
                   <Link
                     to="/Favorites"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                   >
                     Favorites
                   </Link>
 
                   <Link
                     to="/Search"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                   >
                     Search
                   </Link>
 
                   <Link
                     to="/Redlines"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  font-medium"
                   >
                     Feed
                   </Link>
 
                   <Link
                     to="/Releases"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                   >
                     Releases
                   </Link>

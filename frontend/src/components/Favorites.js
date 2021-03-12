@@ -7,9 +7,9 @@ import Favoritecard from "./Favoritecard"
 function Favorites(props) {
   return (
     <div>
-      <header class="bg-gray-600 shadow-2xl">
+      <header class="bg-gray-800 shadow-2xl font-display1">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold text-gray-50">Favorites</h1>
+          <h1 class="text-3xl text-gray-50">Favorites</h1>
         </div>
       </header>
       <main>

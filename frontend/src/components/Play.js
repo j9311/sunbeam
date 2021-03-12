@@ -8,6 +8,7 @@ const Play = ({
   name,
   jerseyNumber,
   set,
+  team,
   image,
   playType,
   playCategory,
@@ -20,17 +21,19 @@ const Play = ({
             <img class="h-15 w-15 rounded-full" src={image} alt="set_im" />
           </div>
           <div class="ml-4">
-            <div class="text-sm font-medium text-gray-100">{name}</div>
-            <div class="text-sm text-gray-50">No. {jerseyNumber}</div>
+            <div class="text-sm text-gray-100 font-semibold">{name}</div>
+            <div class="text-sm text-gray-50 font-thin">{team}</div>
           </div>
         </div>
       </td>
       <td class="px-6 py-4 whitespace-nowrap bg-gray-800">
-        <div class="text-sm text-gray-100">{set.name}</div>
-        <div class="text-sm text-gray-50">{new Date(date).toDateString()}</div>
+        <div class="text-sm text-gray-100 font-semibold">{set.name}</div>
+        <div class="text-sm text-gray-50 font-thin">
+          {new Date(date).toDateString()}
+        </div>
       </td>
       <td class="px-6 py-4 whitespace-nowrap bg-gray-800">
-        <span class="px-2 inline-flex justify-center text-xs leading-5 font-semibold rounded-full bg-yellow-700 text-gray-50">
+        <span class="px-2 uppercase inline-flex font-normal justify-center text-xs leading-5 rounded-full bg-yellow-700 text-gray-50">
           {set.humanRarity}
         </span>
       </td>

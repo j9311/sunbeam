@@ -77,11 +77,9 @@ function Search(props) {
 
   return (
     <div className="font-body">
-      <header className="bg-gray-800 bg-opacity-90">
+      <header className="bg-gray-800 bg-opacity-90 font-display1">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="font-display text-3xl font-bold text-gray-50">
-            Search
-          </h1>
+          <h1 className="text-3xl text-gray-50">Search</h1>
         </div>
       </header>
       <main className="container mx-auto">
@@ -97,10 +95,10 @@ function Search(props) {
                   <li>
                     Player names. Team names. Moment category. Moment Type.
                   </li>
-                  <li className="text-sm font-style: italic">
+                  <li className="text-sm font-style: italic font-thin">
                     i.e. Try searching 'Lebron James' or 'Utah Jazz'.
                   </li>
-                  <li className="text-xs font-style: italic">
+                  <li className="text-xs font-style: italic font-thin">
                     Search times may vary.
                   </li>
                 </ul>

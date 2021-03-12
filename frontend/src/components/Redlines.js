@@ -10,10 +10,12 @@ function Header({ children }) {
 function Redlines(props) {
   return (
     <div>
-      <header class="bg-gray-600">
+      <header class="bg-gray-800 font-display1">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold text-gray-50">Popular Twitter Feeds</h1>
-          <p className="text-gray-200">Customizable feeds coming soon!</p>
+          <h1 class="text-3xl  text-gray-50">Popular Twitter Feeds</h1>
+          <p className="text-gray-200 text-xs">
+            Customizable feeds coming soon!
+          </p>
         </div>
       </header>
       <div className="flex flex-row bg-black text-gray-50 text-center">
