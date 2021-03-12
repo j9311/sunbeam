@@ -103,7 +103,18 @@ function MomentSpec(props) {
               position="right center"
             >
               <div className="bg-gray-700 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 shadow-2xl">
-                In-depth card baller tutorial coming soon
+                <p>
+                  Left: This is a graph showing resistance lines and volume for{" "}
+                  {name}'s moment. Resistance lines are conglomerations of
+                  similarly priced moment listings that form lines of
+                  'resistance' for upward moment price mobility.{" "}
+                </p>
+
+                <p>
+                  Right: Candlestick Series graph that uses EMA and Bollinger
+                  Band indicators to show directionality of sale prices for all
+                  historic sales of this {name} moment.
+                </p>
               </div>
             </Popup>
 
