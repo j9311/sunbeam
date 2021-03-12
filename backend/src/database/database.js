@@ -10,7 +10,7 @@ mongoose
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
-    poolSize: 200,
+    poolSize: 300,
   })
   .then(async function () {
     console.log("Mongoose connected!")

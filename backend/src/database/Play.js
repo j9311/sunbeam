@@ -8,9 +8,10 @@ import { Schema, model, Connection } from "mongoose"
  */
 const playSchema = new Schema(
   {
-    id: { type: String, index: true, unique: true },
-    name: { type: String, index: true },
-    descrption: String,
+    playID: String,
+    setID: { type: String, index: true },
+    name: String,
+    description: String,
     image: String,
     jerseyNumber: Number,
     playType: { type: String, index: true },
@@ -20,6 +21,7 @@ const playSchema = new Schema(
   },
   { versionKey: false }
 )
+playSchema.index({ setID: 1, playID: 1 }, { unique: true })
 
 playSchema.index({ name: "text", playType: "text", team: "text" })
 
