@@ -1,18 +1,22 @@
 import CodexSet from "../database/CodexSet"
 import Play from "../database/Play"
 import User from "../database/User"
+import Transactions from "../database/Transactions"
+import Listings from "../database/Listing"
 import * as Auth from "../auth"
 
 // import {gql} from 'apollo-server'
 export const Query = {
-  getAllSets: async (parent, args, context, info) =>
-    (await CodexSet.find({})).map((set) => {
+  getAllSets: async (parent, args, context, info) => {
+    return (await CodexSet.find({})).map((set) => {
       set.uniqueMoments = set.momentIDs?.length || 0
       return set._doc
-    }),
+    })
+  },
 
-  getSet: async (parent, args, context, info) =>
-    (await CodexSet.findOne({ id: args.id }))._doc,
+  getSet: async (parent, args, context, info) => {
+    return (await CodexSet.findOne({ id: args.id }))._doc
+  },
 
   getMoment: async (parent, args, context, info) => {
     const moment = await Play.findOne({
@@ -92,6 +96,10 @@ export const Set = {
     })
   },
 
+  uniqueMoments: (parent) => {
+    return parent?.momentIDs?.length || 0
+  },
+
   cssRarity: (parent, args, context, info) => {
     return (
       "rarity-" +
@@ -108,5 +116,33 @@ export const Moment = {
   set: async (parent, args, context, info) => {
     console.log("getting set", parent.setID)
     return (await CodexSet.findOne({ id: parent.setID }))._doc
+  },
+
+  listings: async (parent) => {
+    console.log("getting listings", parent.setID, parent.playID)
+    const listings = (
+      await Listings.find({
+        id: `${parent.setID}+${parent.playID}`,
+      }).sort({ time: "asc" })
+    ).map((x) => {
+      const ret = { ...x._doc }
+
+      ;[ret.setID, ret.playID] = ret.id.split("+")
+      delete ret.id
+
+      return ret
+    })
+
+    return listings
+  },
+
+  transactions: async (parent) => {
+    console.log("getting trans", parent.setID)
+    return (
+      await Transactions.find({
+        setID: parent.setID,
+        playID: parent.playID,
+      }).sort({ date: "asc" })
+    ).map((x) => x._doc)
   },
 }

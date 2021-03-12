@@ -16,7 +16,7 @@ export default function MomentPreview({
   return (
     <div className="block xl:w-1/3 lg:w-1/2 md-:w-1/2 w-full p-4 text-gray-50">
       <Link
-        to={"/moment/" + setID + "/" + playID}
+        to={"/moment-spec/" + setID + "/" + playID}
         className="flex p-6 bg-gray-50 bg-opacity-10 hover:bg-opacity-20 rounded-sm"
       >
         <img src={image} alt={name} className="w-32 h-32" />

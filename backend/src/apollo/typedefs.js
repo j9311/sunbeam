@@ -47,6 +47,38 @@ export const Moment = gql`
 
     playType: String
     playCategory: String
+
+    transactions: [Transaction]
+    listings: [Listing]
+  }
+
+  type Transaction {
+    transactionID: String
+    playID: String
+    setID: String
+    price: String
+    date: Float
+    serial: Int
+  }
+
+  type Listing {
+    setID: String
+    playID: String
+
+    time: Float
+    prices: [ListingPrice]
+    volumeCirculation: Int
+    volumeSold: Int
+    volumeListed: Int
+    high: Int
+    low: Int
+    open: Int
+    close: Int
+  }
+
+  type ListingPrice {
+    price: Int
+    serial: Int
   }
 `
 export const MomentListing = gql`

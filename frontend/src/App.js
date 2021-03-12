@@ -33,7 +33,7 @@ const httpLink = createHttpLink({
 const client = new ApolloClient({
   // authLink.concat
   link: httpLink,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({}),
 })
 
 function App() {

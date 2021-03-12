@@ -13,7 +13,7 @@ function Releases(props) {
           </p>
         </div>
       </header>
-      <main>
+      <main className="container mx-auto">
         <div className="flex direction-row justify-center p-2 m-4">
           <a
             target="_blank"
@@ -38,7 +38,7 @@ function Releases(props) {
             />
           </a>
         </div>
-        <div>
+        <div className="text-center">
           <p>
             Check back in for release updates on packs, new sets and moments.
           </p>

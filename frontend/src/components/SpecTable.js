@@ -1,6 +1,12 @@
 import React from "react"
 
-function SpecTable(props) {
+function SpecTable({ hour, day, week, month }) {
+  const rows = [
+    ["1 Hr", hour],
+    ["1 Day", day],
+    ["1 Wk", week],
+    ["1 M", month],
+  ]
   return (
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:mx-6 lg:-mx-8">
@@ -25,7 +31,7 @@ function SpecTable(props) {
                     scope="col"
                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Avg. Sell Price
+                    Avg. Sale Price
                   </th>
                   <th
                     scope="col"
@@ -43,7 +49,7 @@ function SpecTable(props) {
                     scope="col"
                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Avg. SerIAl Offered
+                    Avg. Serial Offered
                   </th>
                   <th
                     scope="col"
@@ -55,7 +61,7 @@ function SpecTable(props) {
                     scope="col"
                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Sell Volume
+                    Transaction Volume
                   </th>
                   <th scope="col" class="relative px-6 py-3">
                     <span class="sr-only">Edit</span>
@@ -63,141 +69,41 @@ function SpecTable(props) {
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="ml-4">
-                      <div class="text-sm font-medium text-gray-900">1 HR</div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">#</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold">
-                      Common
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin1
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin2
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin3
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin4
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin5
-                  </td>
-                  <td class="flex flex-row m-3 whitespace-nowrap text-right text-sm font-medium"></td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="flex items-center">
+                {rows.map(([title, data]) => (
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
                       <div class="ml-4">
                         <div class="text-sm font-medium text-gray-900">
-                          1 DAY
+                          {title}
                         </div>
                       </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">#</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold ">
-                      Common
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin1
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin2
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin3
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin4
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin5
-                  </td>
-                  <td class="flex flex-row m-3 whitespace-nowrap text-right text-sm font-medium"></td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">
-                          1 WK
-                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <div class="text-sm text-gray-900">
+                        {Number(data.ALP?.toFixed(2)) || "--"}
                       </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">#</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold ">
-                      Common
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin1
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin2
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin3
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin4
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin5
-                  </td>
-
-                  <td class="flex flex-row m-3 whitespace-nowrap text-right text-sm font-medium"></td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">1 M</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">#</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold ">
-                      Common
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin1
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin2
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin3
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin4
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin5
-                  </td>
-                  <td class="flex flex-row m-3 whitespace-nowrap text-right text-sm font-medium"></td>
-                </tr>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {Number(data.ASP?.toFixed(2)) || "--"}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {Number(data.ADPS?.toFixed(6)) || "--"}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {Number(data.LDPS?.toFixed(8)) || "--"}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {Number(data.ASO?.toFixed(0)) || "--"}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {Number(data.ASS?.toFixed(0)) || "--"}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {data.TSV ?? "--"}
+                    </td>
+                    <td class="flex flex-row m-3 whitespace-nowrap text-right text-sm font-medium"></td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

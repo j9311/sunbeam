@@ -1,52 +1,111 @@
 import React from "react"
 import MomentChart from "./MomentChart"
 // import rawListings from "./listings.json"
-import Menu from "./Menu"
 import SpecTable from "./SpecTable"
 import Popup from "reactjs-popup"
+import Spinner from "./Spinner"
+import { useQuery, gql } from "@apollo/client"
+import MomentPreview from "./MomentPreview"
+
+const GET_MOMENT = gql`
+  query GetMoment($setID: String!, $playID: String!) {
+    getMoment(setID: $setID, playID: $playID) {
+      playID
+      setID
+      image
+      set {
+        id
+        name
+        image
+        rarity
+        uniqueMoments
+      }
+      name
+      jerseyNumber
+      team
+      playCategory
+      playType
+      date
+      listings {
+        time
+        prices {
+          price
+          serial
+        }
+        volumeCirculation
+        volumeListed
+        high
+        low
+        open
+        close
+      }
+      transactions {
+        transactionID
+        playID
+        setID
+        price
+        date
+        serial
+      }
+    }
+  }
+`
 
 function MomentSpec(props) {
-  return (
-    <div>
-      <div className="flex direction-row">
-        <h1>PLAYER NAME</h1>
-      </div>
-      <div>
-        <button className="group relative w-5em ml-4 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-500">
-          Favorite
-        </button>
-      </div>
-      <div className="m-4">
-        <h4>PLAY TYPE</h4>
+  console.log("props", props)
+  const { loading, error, data } = useQuery(GET_MOMENT, {
+    variables: {
+      setID: props.match.params.setID,
+      playID: props.match.params.playID,
+    },
+  })
 
-        <h4>SET</h4>
-      </div>
-      <h5>#ofLISTINGS</h5>
-      <div>
-        <Popup
-          trigger={
-            <button className="group relative ml-20 w-3em flex justify-center py-2 px-4 border border-transparent text-xs font-sm rounded-md text-white bg-gray-700 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              What Am I Looking At?
+  const {
+    playID,
+    setID,
+    image,
+    name,
+    jerseyNumber,
+    team,
+    date,
+    playType,
+    playCategory,
+    listings,
+    transactions,
+  } = data?.getMoment || {}
+
+  return loading ? (
+    <Spinner />
+  ) : (
+    <div className="container mx-auto mt-12">
+      <div className="w-full flex justify-center">
+        <div className="flex justify-center items-center flex-col w-full">
+          <MomentPreview {...data?.getMoment} />
+          <div className="flex justify-between w-full mb-6">
+            <Popup
+              trigger={
+                <button className="group relative w-3em flex justify-center py-2 px-4 border border-transparent text-xs font-sm rounded-md text-white bg-gray-700 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  What Am I Looking At?
+                </button>
+              }
+              position="right center"
+            >
+              <div className="bg-gray-700 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 shadow-2xl">
+                In-depth card baller tutorial coming soon
+              </div>
+            </Popup>
+
+            <button className="group relative w-5em ml-4 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-500">
+              Favorite
             </button>
-          }
-          position="right center"
-        >
-          <div className="bg-gray-300 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 shadow-2xl">
-            Lit ass shit or something, idk
           </div>
-        </Popup>
+        </div>
       </div>
-      <div className="">
-        <MomentChart />
-      </div>
-      <div className="">
-        <img src="asdfg" alt="this is a placeholder"></img>
-        <h5>description</h5>
-      </div>
-      <br />
-      <hr></hr>
-      <div>
-        <SpecTable />
+
+      <div className="bg-white">
+        <div>
+          <MomentChart listings={listings} transactions={transactions} />
+        </div>
       </div>
     </div>
   )
