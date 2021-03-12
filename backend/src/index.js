@@ -47,9 +47,9 @@ app.listen(process.env.PORT || 5000, function (err) {
   )
 })
 
-// import scrape from "./private/scrape"
-// if (process.env.NODE_ENV === "production") {
-//   scrape().then(() => {
-//     console.log("Done scraping!?")
-//   })
-// }
+import scrape from "./private/scrape"
+if (process.env.NODE_ENV === "production" && !process.env.NO_SCRAPE) {
+  scrape().then(() => {
+    console.log("Done scraping!?")
+  })
+}
