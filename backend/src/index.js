@@ -40,7 +40,11 @@ app.listen(process.env.PORT || 5000, function (err) {
     return console.error(err)
   }
 
-  console.log("Started at http://localhost:5000")
+  console.log(
+    `listening on port ${process.env.PORT || 5000} as ${
+      process.env.NODE_ENV || "development"
+    }`
+  )
 })
 
 import scrape from "./private/scrape"
