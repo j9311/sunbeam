@@ -45,7 +45,7 @@ const Play = ({
       </td>
       <td class="m-3 whitespace-nowrap text-center text-sm font-medium bg-gray-800">
         <Link
-          to={`/set/${setID}/${playID}`}
+          to={`/moment-spec/${setID}/${playID}`}
           type="submit"
           class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >

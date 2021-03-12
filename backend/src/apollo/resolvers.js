@@ -15,7 +15,10 @@ export const Query = {
     (await CodexSet.findOne({ id: args.id }))._doc,
 
   getMoment: async (parent, args, context, info) => {
-    const moment = await Play.findOne({ setID: args.setID, playID: args.id })
+    const moment = await Play.findOne({
+      setID: args.setID,
+      playID: args.playID,
+    })
     console.log("id:", args.id, "setID:", args.setID, moment)
     moment.set = await CodexSet.findOne({ id: args.setID })
     console.log(args, context, info)

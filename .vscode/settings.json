@@ -7,7 +7,7 @@
     "enable": true
   },
   "search.exclude": {
-    "backend/private/unpack": true,
+    "backend/src/private/unpack": true,
     "charts": true
   },
   "editor.wrappingIndent": "indent",

@@ -50,7 +50,11 @@ function App() {
             <Route exact path="/redlines" component={Redlines} />
             <Route exact path="/releases" component={Releases} />
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/moment-spec" component={MomentSpec} />
+            <Route
+              exact
+              path="/moment-spec/:setID/:playID"
+              component={MomentSpec}
+            />
             <Route exact path="/termsofservice" component={TermsofService} />
           </Switch>
           <Footer />

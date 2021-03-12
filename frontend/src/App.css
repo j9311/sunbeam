@@ -16,6 +16,15 @@ body::before {
   backdrop-filter: brightness(0.3);
 }
 
+.googlelogin {
+  border: none !important;
+}
+
+.googlelogin span {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 .rarity {
   box-shadow: 0px 0px 4px 0px var(--rarity-color);
 }

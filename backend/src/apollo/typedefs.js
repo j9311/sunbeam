@@ -6,7 +6,7 @@ export const Query = gql`
 
     getAllSets: [Set]
     getSet(id: String!): Set
-    getMoment(id: String!, setID: String): Moment
+    getMoment(playID: String!, setID: String): Moment
     getMoments(moments: [MomentArgs]!): [Moment]
     searchMoments(search: String!): [Moment]
   }
