@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useQuery, gql } from "@apollo/client"
 
 import Play from "./Play"
+import Spinner from "./Spinner"
 
 const SEARCH_PLAYS = gql`
   query AllMomentsSearchQuery($search: String!) {
@@ -44,7 +45,7 @@ function Search(props) {
     const val = evt.target.value
     setSearchInput(val)
 
-    if (val.length > 3) {
+    if (val.length > 2) {
       timeout = setTimeout(() => {
         runSearch(val)
       }, 400)
@@ -67,10 +68,10 @@ function Search(props) {
     clearTimeout(timeout)
     console.log("Str", str, searchInput)
 
-    if ((str ?? searchInput).length > 3) {
+    if ((str ?? searchInput).length > 2) {
       setSearch(str ?? searchInput)
     } else {
-      alert("Please type more than 3 characters for your search query!")
+      alert("Please type more than 2 characters for your search query!")
     }
   }
 
@@ -93,11 +94,14 @@ function Search(props) {
                 </h2>
                 <hr className="flex mx-4"></hr>
                 <ul className="mt-1 text-sm font-semibold text-gray-150 p-5">
-                  <li>Player names. Moment names.</li>
-                  <li>Set and Rarity coming soon.</li>
                   <li>
-                    Some listings and moments may not be present due to lack of
-                    volume;listings, sales or otherwise.
+                    Player names. Team names. Moment category. Moment Type.
+                  </li>
+                  <li className="text-sm font-style: italic">
+                    i.e. Try searching 'Lebron James' or 'Utah Jazz'.
+                  </li>
+                  <li className="text-xs font-style: italic">
+                    Search times may vary.
                   </li>
                 </ul>
                 <p className="mt-1 text-sm text-gray-175 p-5 font-extralight">
@@ -141,20 +145,29 @@ function Search(props) {
             </div>
           </div>
         </div>
-        <div class="flex flex-col">
-          <div class="overflow-x-auto sm:mx-6">
-            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-              <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
-                  <tbody class="bg-white divide-y divide-gray-200">
-                    {plays.map((play) => {
-                      return <Play {...play} />
-                    })}
-                  </tbody>
-                </table>
+        <div class="flex flex-col justify-center">
+          {loading ? (
+            <Spinner />
+          ) : error ? (
+            <div>
+              <h1>Error with search query</h1>
+              <pre>{error.message}</pre>
+            </div>
+          ) : (
+            <div class="overflow-x-auto sm:mx-6">
+              <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <tbody class="bg-white divide-y divide-gray-200">
+                      {plays.map((play) => {
+                        return <Play {...play} />
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </main>
     </div>
