@@ -43,5 +43,9 @@ app.listen(process.env.PORT || 5000, function (err) {
   console.log("Started at http://localhost:5000")
 })
 
-// import scrape from "./private/scrape"
-// scrape().then()
+import scrape from "./private/scrape"
+if (process.env.NODE_ENV === "production") {
+  scrape().then(() => {
+    console.log("Done scraping!?")
+  })
+}
