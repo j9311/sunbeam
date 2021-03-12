@@ -45,7 +45,7 @@ export default function CodexSet(props) {
       }}
     >
       <div className="bg2">
-        <div className="pt-8">
+        <div className="">
           {loading ? (
             <Spinner />
           ) : error ? (
@@ -54,7 +54,7 @@ export default function CodexSet(props) {
               <pre>{error.message}</pre>
             </div>
           ) : (
-            <div className="container mx-auto">
+            <div className="container mx-auto pt-8">
               <div className="text-center select-none">
                 <h4 className="text-2xl font-display3">Viewing Set</h4>
                 <h1 className="text-9xl font-display3">
