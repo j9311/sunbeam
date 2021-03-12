@@ -6,7 +6,11 @@ import conn from "./database/database"
 const app = express()
 
 import cors from "cors"
-app.use(cors({ origin: /^http(s)?:\/\/(localhost|superdomain.com)(:3000)?/ }))
+app.use(
+  cors({
+    origin: /^http(s)?:\/\/(localhost|studio.apollographql.com|nftoast.xyz)(:3000)?/,
+  })
+)
 
 import cookieParser from "cookie-parser"
 app.use(cookieParser())
@@ -47,9 +51,9 @@ app.listen(process.env.PORT || 5000, function (err) {
   )
 })
 
-// import scrape from "./private/scrape"
-// if (process.env.NODE_ENV === "production") {
-//   scrape().then(() => {
-//     console.log("Done scraping!?")
-//   })
-// }
+import scrape from "./private/scrape"
+if (process.env.NODE_ENV === "production" && !process.env.NO_SCRAPE) {
+  scrape().then(() => {
+    console.log("Done scraping!?")
+  })
+}
