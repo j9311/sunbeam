@@ -6,7 +6,11 @@ import conn from "./database/database"
 const app = express()
 
 import cors from "cors"
-app.use(cors({ origin: /^http(s)?:\/\/(localhost|superdomain.com)(:3000)?/ }))
+app.use(
+  cors({
+    origin: /^http(s)?:\/\/(localhost|studio.apollographql.com|nftoast.xyz)(:3000)?/,
+  })
+)
 
 import cookieParser from "cookie-parser"
 app.use(cookieParser())
