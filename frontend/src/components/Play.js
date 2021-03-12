@@ -23,7 +23,7 @@ const Play = ({
   }
 
   return (
-    isFavorite && (
+    (!fav || isFavorite) && (
       <tr>
         <td class="px-6 py-4 whitespace-nowrap bg-gray-800">
           <div class="flex items-center">
