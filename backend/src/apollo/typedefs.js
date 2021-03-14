@@ -13,7 +13,7 @@ export const Query = gql`
 `
 
 export const Set = gql`
-  type Set {
+  type Set @cacheControl(maxAge: 60) {
     id: String!
 
     name: String
@@ -27,11 +27,11 @@ export const Set = gql`
   }
 `
 export const Moment = gql`
-  type Moment {
+  type Moment @cacheControl(maxAge: 60) {
     playID: String!
     setID: String!
 
-    set: Set
+    set: Set @cacheControl(maxAge: 3600)
     image: String
     description: String
 
@@ -43,11 +43,11 @@ export const Moment = gql`
     playType: String
     playCategory: String
 
-    transactions: [Transaction]
-    listings: [Listing]
+    transactions: [Transaction] @cacheControl(maxAge: 300)
+    listings: [Listing] @cacheControl(maxAge: 300)
   }
 
-  type Transaction {
+  type Transaction @cacheControl(maxAge: 300) {
     transactionID: String
     playID: String
     setID: String
@@ -56,12 +56,12 @@ export const Moment = gql`
     serial: Int
   }
 
-  type Listing {
+  type Listing @cacheControl(maxAge: 300) {
     setID: String
     playID: String
 
     time: Float
-    prices: [ListingPrice]
+    prices: [ListingPrice] @cacheControl(maxAge: 3600)
     volumeCirculation: Int
     volumeSold: Int
     volumeListed: Int

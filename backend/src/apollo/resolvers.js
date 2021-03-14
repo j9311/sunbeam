@@ -8,25 +8,20 @@ import * as Auth from "../auth"
 // import {gql} from 'apollo-server'
 export const Query = {
   getAllSets: async (parent, args, context, info) => {
-    return (await CodexSet.find({})).map((set) => {
-      set.uniqueMoments = set.momentIDs?.length || 0
-      return set._doc
-    })
+    return await CodexSet.find({}).lean()
   },
 
   getSet: async (parent, args, context, info) => {
-    return (await CodexSet.findOne({ id: args.id }))._doc
+    return await CodexSet.findOne({ id: args.id }).lean()
   },
 
   getMoment: async (parent, args, context, info) => {
     const moment = await Play.findOne({
       setID: args.setID,
       playID: args.playID,
-    })
-    console.log("id:", args.id, "setID:", args.setID, moment)
-    moment.set = await CodexSet.findOne({ id: args.setID })
-    console.log(args, context, info)
-    return moment._doc
+    }).lean()
+    moment.set = await CodexSet.findOne({ id: args.setID }).lean()
+    return moment
   },
 
   getMoments: async (parent, args, context, info) => {
@@ -39,23 +34,17 @@ export const Query = {
       return null
     }
 
-    const moments = await Play.find({ $or: momentSearch })
-    await Promise.all(
-      moments.map((moment) => {
-        return (async () => {
-          moment.set = await CodexSet.find({ id: args.setID })
-        })()
-      })
-    )
-    return moments.map((moment) => moment._doc)
+    const moments = await Play.find({ $or: momentSearch }).lean()
+
+    return moments
   },
 
   verifyLogin: async (parent, args, context, info) => {
     try {
       const loggedIn = await Auth.verify(args.token)
       if (loggedIn) {
-        const user = await User.findOne({ email })
-        return user._doc
+        const user = await User.findOne({ email }).lean()
+        return user
       }
       return null
     } catch (e) {
@@ -79,25 +68,19 @@ export const Query = {
         { playCategory: { $regex: exp } },
         // { rarity: { $regex: exp } },
       ],
-    })
+    }).lean()
     console.log("plays", plays)
-    return plays.map((play) => play._doc)
+    return plays
   },
 }
 
 export const Set = {
   moments: async (parent, args, context, info) => {
     console.log("Getting moments", parent.momentIDs)
-    return (
-      await Play.find({ setID: parent.id, playID: { $in: parent.momentIDs } })
-    ).map((play) => {
-      console.log("parent", parent.id, play.id)
-      console.log("play", play)
-      play._doc.setID = parent.id
-      play._doc.set = { ...parent }
-
-      return play._doc
-    })
+    return await Play.find({
+      setID: parent.id,
+      playID: { $in: parent.momentIDs },
+    }).lean()
   },
 
   uniqueMoments: (parent) => {
@@ -118,19 +101,19 @@ export const Set = {
 
 export const Moment = {
   set: async (parent, args, context, info) => {
-    console.log("getting set", parent.setID)
-    return (await CodexSet.findOne({ id: parent.setID }))._doc
+    return await CodexSet.findOne({ id: parent.setID }).lean()
   },
 
   listings: async (parent) => {
-    console.log("getting listings", parent.setID, parent.playID)
     const listings = (
-      await Listings.find({
-        id: `${parent.setID}+${parent.playID}`,
-      }).sort({ time: "asc" })
-    ).map((x) => {
-      const ret = { ...x._doc }
-
+      await Listings.find(
+        {
+          id: `${parent.setID}+${parent.playID}`,
+        },
+        {},
+        { sort: { time: 1 } }
+      ).lean()
+    ).map((ret) => {
       ;[ret.setID, ret.playID] = ret.id.split("+")
       delete ret.id
 
@@ -142,11 +125,13 @@ export const Moment = {
 
   transactions: async (parent) => {
     console.log("getting trans", parent.setID)
-    return (
-      await Transactions.find({
+    return await Transactions.find(
+      {
         setID: parent.setID,
         playID: parent.playID,
-      }).sort({ date: "asc" })
-    ).map((x) => x._doc)
+      },
+      {},
+      { sort: { date: 1 } }
+    )
   },
 }

@@ -4,7 +4,7 @@
       "type": "node",
       "request": "launch",
       "name": "Debug Scraper",
-      "program": "${workspaceFolder}/backend/private/runScrape.js",
+      "program": "${workspaceFolder}/backend/src/private/runScrape.js",
       "cwd": "${workspaceFolder}/backend",
       "runtimeExecutable": "${workspaceFolder}/backend/node_modules/.bin/babel-node",
       "runtimeArgs": ["--inspect", "--inspect-brk"]
@@ -13,7 +13,7 @@
       "type": "node",
       "request": "launch",
       "name": "Debug Backend",
-      "program": "${workspaceFolder}/backend/index.js",
+      "program": "${workspaceFolder}/backend/src/index.js",
       "cwd": "${workspaceFolder}/backend",
       "runtimeExecutable": "${workspaceFolder}/backend/node_modules/.bin/babel-node",
       "protocol": "inspector",

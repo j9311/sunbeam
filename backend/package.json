@@ -21,6 +21,7 @@
     "@supercharge/promise-pool": "^1.6.0",
     "apollo-server": "^2.21.0",
     "apollo-server-express": "^2.21.0",
+    "apollo-server-plugin-response-cache": "^0.6.0",
     "body-parser": "^1.19.0",
     "browserslist": "^4.16.3",
     "contentful": "^8.1.8",
