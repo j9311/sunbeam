@@ -60,7 +60,7 @@ function Login(props) {
 
             <div class="text-sm">
               <Link
-                to="/Dashboard"
+                to=""
                 class="font-medium text-green-600 hover:text-green-500"
               >
                 Forgot your password?
