@@ -21,7 +21,7 @@ function Redlines(props) {
       <div className="flex flex-row bg-black text-gray-50 text-center">
         <div className="w-1/4">
           <Header>NBA Top Shot Official</Header>
-          <TwitterContainer feed="nba_topshot" />
+          <TwitterContainer feed="nbatopshot" />
         </div>
         <div className="w-1/4">
           <Header>TheFirstMint</Header>

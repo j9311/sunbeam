@@ -301,6 +301,20 @@ function MomentChart({ listings, transactions }) {
                       value:
                         currentItem.close && numberFormat(currentItem.close),
                     },
+                    {
+                      label: "LowList",
+                      value: currentItem.low && numberFormat(currentItem.low),
+                    },
+                    {
+                      label: "HighList",
+                      value: currentItem.high && numberFormat(currentItem.high),
+                    },
+                    {
+                      label: "Volume",
+                      value:
+                        currentItem.volume && numberFormat(currentItem.volume),
+                    },
+                    { label: "RL", value: parseInt([currentItem.low]) },
                   ],
                 }),
               }}
@@ -450,7 +464,7 @@ function MomentChart({ listings, transactions }) {
             <YAxis />
           </Chart>
           <Chart
-            id={2}
+            id={1}
             height={height * 0.3}
             padding={{ top: 25, bottom: 0, left: 0, right: 0 }}
             origin={barChartOrigin}
