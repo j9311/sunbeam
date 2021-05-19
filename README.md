@@ -9,5 +9,7 @@ James Post
 
 Xavier Bergeron
 
-## Try it here! {{WIP BUILD, MONGODB AND SCRAPER OFFLINE}}{{NOT OPERATIONAL AS OF 04/22/21}}
+## Try it here! 
+
+{{WIP BUILD, MONGODB AND SCRAPER OFFLINE}}{{NOT OPERATIONAL AS OF 05/18/21}}
 <--- NFToast.xyz --->
