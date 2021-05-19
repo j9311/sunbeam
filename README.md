@@ -4,6 +4,9 @@ Investor tools and data analytics for NFT/collectibles markets. User logins, das
 MERNG+ stack.
 
 
+#05/19/21:
+Re-tool GraphQL to REST ep due to history size. Change compute to server side to limit get timeouts.
+
 
 James Post
 
