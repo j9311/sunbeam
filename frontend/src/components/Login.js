@@ -8,11 +8,11 @@ function Login(props) {
       <div class="max-w-md w-full space-y-8">
         <div>
           <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-100">
-            Sign in to your account
+            Much sad!
           </h2>
-          <p class="mt-2 text-center text-sm text-gray-600"></p>
+          <p class="mt-2 text-center text-sm text-gray-600">We have turned off the scraper and document collection in our DB as a resultant of changes in the marketplace. Effectively, the site is dead; for now. For those interested, checkout the Github link for the codebase and feel free to re-tool for your NFT marketplace of choice!</p>
         </div>
-        <form class="mt-8 space-y-6" action="#" method="POST">
+        {/* <form class="mt-8 space-y-6" action="#" method="POST">
           <input type="hidden" name="remember" value="true" />
           <div class="rounded-md shadow-sm -space-y-px">
             <div>
@@ -91,7 +91,8 @@ function Login(props) {
               Sign in
             </button>
           </div>
-        </form>
+        </form> */}
+         <a href="https://github.com/j9311/sunbeam" class="mt-2 text-center text-lg text-white-600"><h3>GITHUB LINK</h3></a>
       </div>
     </div>
   )
